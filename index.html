@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisaBridge - Your Gateway to the USA</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- GSAP 3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/visalogo2.png" alt="TruePathVisa Logo" class="logo-img">
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="requirements.html" class="nav-link">Requirements</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact us</a></li>
+                    <li><a href="payment.html" class="nav-link">Payment</a></li>
+                    <li><a href="partners.html" class="nav-link">Partners</a></li>
+                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <a href="#book" class="btn btn-primary">Book consultation</a>
+
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Background Images Slider -->
+        <div class="hero-backgrounds">
+            <div class="hero-background active" data-index="0">
+                <img src="assets/images/lasvegas.jpg" alt="Las Vegas Skyline" class="hero-bg-image">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-background" data-index="1">
+                <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="New York Skyline" class="hero-bg-image">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-background" data-index="2">
+                <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="Los Angeles Skyline" class="hero-bg-image">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-background" data-index="3">
+                <img src="assets/images/miami.jpg" alt="Miami Skyline" class="hero-bg-image">
+                <div class="hero-overlay"></div>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <!-- Background Titles -->
+            <div class="hero-titles">
+                <h1 class="hero-title-bg active" data-index="0">DISCOVER LAS VEGAS</h1>
+                <h1 class="hero-title-bg" data-index="1">DISCOVER NEW YORK</h1>
+                <h1 class="hero-title-bg" data-index="2">DISCOVER LOS ANGELES</h1>
+                <h1 class="hero-title-bg" data-index="3">DISCOVER MIAMI</h1>
+            </div>
+
+            <!-- Destination Labels -->
+            <div class="hero-destination">
+                <div class="destination-label active" data-index="0">
+                    <div class="label-line"></div>
+                    <span>DISCOVER NEW YORK</span>
+                    <div class="label-line-horizontal"></div>
+                </div>
+                <div class="destination-label" data-index="1">
+                    <div class="label-line"></div>
+                    <span>DISCOVER LOS ANGELES</span>
+                    <div class="label-line-horizontal"></div>
+                </div>
+                <div class="destination-label" data-index="2">
+                    <div class="label-line"></div>
+                    <span>DISCOVER MIAMI</span>
+                    <div class="label-line-horizontal"></div>
+                </div>
+                <div class="destination-label" data-index="3">
+                    <div class="label-line"></div>
+                    <span>DISCOVER LAS VEGAS</span>
+                    <div class="label-line-horizontal"></div>
+                </div>
+            </div>
+
+            <!-- Circle Images -->
+            <div class="hero-circle-image">
+                <div class="circle-decoration">
+                    <div class="arc arc-1"></div>
+                    <div class="arc arc-2"></div>
+                    <div class="arc arc-3"></div>
+                </div>
+                <div class="circle-images-wrapper">
+                    <div class="circle-image-container active" data-index="0">
+                        <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="New York Skyline">
+                    </div>
+                    <div class="circle-image-container" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Los Angeles Skyline">
+                    </div>
+                    <div class="circle-image-container" data-index="2">
+                        <img src="assets/images/miami.jpg" alt="Miami Skyline">
+                    </div>
+                    <div class="circle-image-container" data-index="3">
+                        <img src="assets/images/lasvegas.jpg" alt="Las Vegas Skyline">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide Indicators -->
+            <div class="slide-indicators">
+                <button class="indicator active" data-index="0" aria-label="Go to slide 1"></button>
+                <button class="indicator" data-index="1" aria-label="Go to slide 2"></button>
+                <button class="indicator" data-index="2" aria-label="Go to slide 3"></button>
+                <button class="indicator" data-index="3" aria-label="Go to slide 4"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="methodology">
+        <div class="methodology-container">
+            <span class="methodology-label">Our Methodology</span>
+            <h2 class="methodology-title">Our Professional 4-Step Process</h2>
+            <p class="methodology-subtitle">We provide expert oversight at every critical stage of your visa journey.</p>
+
+            <div class="process-steps">
+                <div class="process-line"></div>
+
+                <div class="process-step">
+                    <div class="step-circle">1</div>
+                    <span class="step-label">DS-160</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-circle">2</div>
+                    <span class="step-label">PAYMENT</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-circle">3</div>
+                    <span class="step-label">BOOKING</span>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-circle">4</div>
+                    <span class="step-label">INTERVIEW</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Cards Section -->
+    <section class="steps-cards">
+        <div class="cards-container">
+            <!-- Card 1: DS-160 -->
+            <div class="step-card">
+                <div class="card-description">
+                    <div class="card-tagline">Step 01</div>
+                    <h3 class="card-title">DS-160 Form</h3>
+                    <p class="card-excerpt">We guide you through completing the DS-160 application form with precision and accuracy, ensuring all information is correctly entered.</p>
+                    <div class="card-cta">
+                        <a href="#book" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <figure class="card-figure">
+                    <img src="assets/images/ds160s1.png" alt="DS-160 Form">
+                </figure>
+            </div>
+
+            <!-- Card 2: Payment -->
+            <div class="step-card">
+                <div class="card-description">
+                    <div class="card-tagline">Step 02</div>
+                    <h3 class="card-title">Payment Processing</h3>
+                    <p class="card-excerpt">Secure payment handling through our trusted agency partners, with transparent fees and confirmation tracking.</p>
+                    <div class="card-cta">
+                        <a href="#book" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <figure class="card-figure">
+                    <img src="assets/images/agencys2.png" alt="Payment Processing">
+                </figure>
+            </div>
+
+            <!-- Card 3: Booking -->
+            <div class="step-card">
+                <div class="card-description">
+                    <div class="card-tagline">Step 03</div>
+                    <h3 class="card-title">Interview Booking</h3>
+                    <p class="card-excerpt">We help you schedule your visa interview at the nearest U.S. Embassy or Consulate at a convenient time.</p>
+                    <div class="card-cta">
+                        <a href="#book" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+                <figure class="card-figure">
+                    <img src="assets/images/calendars3.png" alt="Interview Booking">
+                </figure>
+            </div>
+
+            <!-- Card 4: Interview -->
+            <div class="step-card">
+                <div class="card-description">
+                    <div class="card-tagline">Step 04</div>
+                    <h3 class="card-title">Interview Preparation</h3>
+                    <p class="card-excerpt">Comprehensive interview coaching and preparation to ensure you're confident and ready for your visa interview.</p>
+                    <div class="card-cta">
+                        <a href="#book" class="btn btn-primary">Prepare Now</a>
+                    </div>
+                </div>
+                <figure class="card-figure">
+                    <img src="assets/images/interviews4.png" alt="Interview Preparation">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
