@@ -128,32 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const cards = gsap.utils.toArray(".step-card");
 
         if (cards.length > 0) {
-            const lastCardIndex = cards.length - 1;
-
-            // Create ScrollTrigger for the last card
-            const lastCardST = ScrollTrigger.create({
-                trigger: cards[cards.length - 1],
-                start: "center center"
-            });
-
-            // Iterate over each card
-            cards.forEach((card, index) => {
-                const scale = index === lastCardIndex ? 1 : 0.9;
-                const scaleDown = gsap.to(card, {
-                    scale: scale,
-                    borderRadius: index === lastCardIndex ? "20px" : "30px"
-                });
-
+            cards.forEach((card) => {
                 ScrollTrigger.create({
                     trigger: card,
                     start: "top top",
-                    end: () => lastCardST.start,
+                    end: "bottom top",
                     pin: true,
-                    pinSpacing: false,
-                    scrub: 0.5,
-                    ease: "none",
-                    animation: scaleDown,
-                    toggleActions: "restart none none reverse"
+                    pinSpacing: true
                 });
             });
         }
