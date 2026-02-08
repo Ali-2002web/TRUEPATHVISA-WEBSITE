@@ -484,13 +484,16 @@ img {
 /* Steps Cards Section - Stacking Animation */
 .steps-cards {
     background-color: var(--dark-blue);
-    padding: 0;
+    padding: 80px 40px;
 }
 
 .cards-container {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 }
 
 .step-card {
