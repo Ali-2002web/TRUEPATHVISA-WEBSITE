@@ -489,7 +489,7 @@ img {
 
 .cards-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -498,8 +498,8 @@ img {
     grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
     width: 100%;
-    height: 90vh;
-    min-height: 600px;
+    height: 95vh;
+    min-height: 700px;
     background-color: var(--white);
     border-radius: 20px;
     overflow: hidden;
