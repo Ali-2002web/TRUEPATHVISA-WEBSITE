@@ -1,3 +1,71 @@
+// Language Toggle System
+function getCurrentLang() {
+    return localStorage.getItem('lang') || 'fr';
+}
+
+function setLang(lang) {
+    localStorage.setItem('lang', lang);
+    applyTranslations(lang);
+    // Update toggle buttons
+    document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+    // Update html lang attribute
+    document.documentElement.lang = lang;
+    // Re-render calendar if it exists
+    if (window.bookingCalendar && window.bookingCalendar.grid) {
+        window.bookingCalendar.render();
+        window.bookingCalendar.updateSlotsTitle();
+    }
+}
+
+function applyTranslations(lang) {
+    const t = translations[lang];
+    if (!t) return;
+    // Text content
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                // skip, handled by data-i18n-placeholder
+            } else if (key.includes('.title') && t[key].includes('<br>')) {
+                el.innerHTML = t[key];
+            } else {
+                el.textContent = t[key];
+            }
+        }
+    });
+    // innerHTML for elements with BR tags
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) {
+            el.innerHTML = t[key];
+        }
+    });
+    // Placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) {
+            el.placeholder = t[key];
+        }
+    });
+}
+
+function initLangToggle() {
+    const lang = getCurrentLang();
+    document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.lang === lang);
+        opt.addEventListener('click', () => {
+            setLang(opt.dataset.lang);
+        });
+    });
+    // Apply saved language on load
+    if (lang !== 'fr') {
+        applyTranslations(lang);
+    }
+    document.documentElement.lang = lang;
+}
+
 // Header scroll effect
 const header = document.querySelector('.header');
 
@@ -152,12 +220,22 @@ class BookingCalendar {
     }
 
     updateSlotsTitle() {
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        this.slotsTitle.textContent = 'Available Slots for ' + months[this.selectedDate.getMonth()] + ' ' + this.selectedDate.getDate();
+        const lang = getCurrentLang();
+        const t = translations[lang];
+        const months = t['cal.months.short'];
+        const prefix = t['cal.slots.prefix'];
+        if (lang === 'fr') {
+            this.slotsTitle.textContent = prefix + this.selectedDate.getDate() + ' ' + months[this.selectedDate.getMonth()];
+        } else {
+            this.slotsTitle.textContent = prefix + months[this.selectedDate.getMonth()] + ' ' + this.selectedDate.getDate();
+        }
     }
 
     render() {
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const lang = getCurrentLang();
+        const t = translations[lang];
+        const months = t['cal.months.long'];
+        const days = t['cal.days'];
         this.monthLabel.textContent = months[this.currentMonth] + ' ' + this.currentYear;
 
         const firstDay = new Date(this.currentYear, this.currentMonth, 1).getDay();
@@ -165,7 +243,7 @@ class BookingCalendar {
         const daysInPrev = new Date(this.currentYear, this.currentMonth, 0).getDate();
 
         let html = '';
-        ['S', 'M', 'T', 'W', 'T', 'F', 'S'].forEach(d => {
+        days.forEach(d => {
             html += '<div class="day-header">' + d + '</div>';
         });
 
@@ -205,10 +283,30 @@ class BookingCalendar {
     }
 }
 
+// FAQ Accordion
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            // Close all items
+            faqItems.forEach(i => i.classList.remove('active'));
+            // Open clicked item if it wasn't already open
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
 // Initialize slider when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new HeroSlider();
-    new BookingCalendar();
+    window.bookingCalendar = new BookingCalendar();
+    initFAQ();
+    initLangToggle();
 
     // Initialize GSAP ScrollTrigger for card stacking animation
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {

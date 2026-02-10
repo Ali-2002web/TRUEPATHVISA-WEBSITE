@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VisaBridge - Your Gateway to the USA</title>
+    <title>VisaBridge - Votre Passerelle vers les USA</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,16 +22,20 @@
 
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="requirements.html" class="nav-link">Requirements</a></li>
-                    <li><a href="payment.html" class="nav-link">Payment</a></li>
-                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                    <li><a href="index.html" class="nav-link active" data-i18n="nav.home">Accueil</a></li>
+                    <li><a href="requirements.html" class="nav-link" data-i18n="nav.requirements">Documents requis</a></li>
+                    <li><a href="payment.html" class="nav-link" data-i18n="nav.payment">Paiement</a></li>
+                    <li><a href="faq.html" class="nav-link" data-i18n="nav.faq">FAQ</a></li>
                 </ul>
             </nav>
 
-            <a href="book.html" class="btn btn-primary">Book consultation</a>
+            <div class="lang-toggle">
+                <span class="lang-option" data-lang="fr">FR</span>
+                <span class="lang-option" data-lang="en">EN</span>
+            </div>
+            <a href="book.html" class="btn btn-primary" data-i18n="nav.book">Réserver une consultation</a>
 
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <button class="mobile-menu-btn" aria-label="Basculer le menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -80,56 +84,56 @@
         <div class="hero-content">
             <!-- Background Titles -->
             <div class="hero-titles">
-                <h1 class="hero-title-bg active" data-index="0">DISCOVER LAS VEGAS</h1>
-                <h1 class="hero-title-bg" data-index="1">DISCOVER NEW YORK</h1>
-                <h1 class="hero-title-bg" data-index="2">DISCOVER LOS ANGELES</h1>
-                <h1 class="hero-title-bg" data-index="3">DISCOVER MIAMI</h1>
-                <h1 class="hero-title-bg" data-index="4">DISCOVER ORLANDO</h1>
-                <h1 class="hero-title-bg" data-index="5">DISCOVER WASHINGTON</h1>
-                <h1 class="hero-title-bg" data-index="6">DISCOVER CHICAGO</h1>
-                <h1 class="hero-title-bg" data-index="7">DISCOVER SAN FRANCISCO</h1>
+                <h1 class="hero-title-bg active" data-index="0" data-i18n="hero.title.0">DÉCOUVREZ LAS VEGAS</h1>
+                <h1 class="hero-title-bg" data-index="1" data-i18n="hero.title.1">DÉCOUVREZ NEW YORK</h1>
+                <h1 class="hero-title-bg" data-index="2" data-i18n="hero.title.2">DÉCOUVREZ LOS ANGELES</h1>
+                <h1 class="hero-title-bg" data-index="3" data-i18n="hero.title.3">DÉCOUVREZ MIAMI</h1>
+                <h1 class="hero-title-bg" data-index="4" data-i18n="hero.title.4">DÉCOUVREZ ORLANDO</h1>
+                <h1 class="hero-title-bg" data-index="5" data-i18n="hero.title.5">DÉCOUVREZ WASHINGTON</h1>
+                <h1 class="hero-title-bg" data-index="6" data-i18n="hero.title.6">DÉCOUVREZ CHICAGO</h1>
+                <h1 class="hero-title-bg" data-index="7" data-i18n="hero.title.7">DÉCOUVREZ SAN FRANCISCO</h1>
             </div>
 
             <!-- Destination Labels -->
             <div class="hero-destination">
                 <div class="destination-label active" data-index="0">
                     <div class="label-line"></div>
-                    <span>DISCOVER NEW YORK</span>
+                    <span data-i18n="hero.label.0">DÉCOUVREZ NEW YORK</span>
                     <div class="label-line-horizontal"></div>
                 </div>
                 <div class="destination-label" data-index="1">
                     <div class="label-line"></div>
-                    <span>DISCOVER LOS ANGELES</span>
+                    <span data-i18n="hero.label.1">DÉCOUVREZ LOS ANGELES</span>
                     <div class="label-line-horizontal"></div>
                 </div>
                 <div class="destination-label" data-index="2">
                     <div class="label-line"></div>
-                    <span>DISCOVER MIAMI</span>
+                    <span data-i18n="hero.label.2">DÉCOUVREZ MIAMI</span>
                     <div class="label-line-horizontal"></div>
                 </div>
                 <div class="destination-label" data-index="3">
                     <div class="label-line"></div>
-                    <span>DISCOVER ORLANDO</span>
+                    <span data-i18n="hero.label.3">DÉCOUVREZ ORLANDO</span>
                     <div class="label-line-horizontal"></div>
                 </div>
                 <div class="destination-label" data-index="4">
                     <div class="label-line"></div>
-                    <span>DISCOVER WASHINGTON</span>
+                    <span data-i18n="hero.label.4">DÉCOUVREZ WASHINGTON</span>
                     <div class="label-line-horizontal"></div>
                 </div>
                 <div class="destination-label" data-index="5">
                     <div class="label-line"></div>
-                    <span>DISCOVER CHICAGO</span>
+                    <span data-i18n="hero.label.5">DÉCOUVREZ CHICAGO</span>
                     <div class="label-line-horizontal"></div>
                 </div>
                 <div class="destination-label" data-index="6">
                     <div class="label-line"></div>
-                    <span>DISCOVER SAN FRANCISCO</span>
+                    <span data-i18n="hero.label.6">DÉCOUVREZ SAN FRANCISCO</span>
                     <div class="label-line-horizontal"></div>
                 </div>
                 <div class="destination-label" data-index="7">
                     <div class="label-line"></div>
-                    <span>DISCOVER LAS VEGAS</span>
+                    <span data-i18n="hero.label.7">DÉCOUVREZ LAS VEGAS</span>
                     <div class="label-line-horizontal"></div>
                 </div>
             </div>
@@ -171,14 +175,14 @@
 
             <!-- Slide Indicators -->
             <div class="slide-indicators">
-                <button class="indicator active" data-index="0" aria-label="Go to slide 1"></button>
-                <button class="indicator" data-index="1" aria-label="Go to slide 2"></button>
-                <button class="indicator" data-index="2" aria-label="Go to slide 3"></button>
-                <button class="indicator" data-index="3" aria-label="Go to slide 4"></button>
-                <button class="indicator" data-index="4" aria-label="Go to slide 5"></button>
-                <button class="indicator" data-index="5" aria-label="Go to slide 6"></button>
-                <button class="indicator" data-index="6" aria-label="Go to slide 7"></button>
-                <button class="indicator" data-index="7" aria-label="Go to slide 8"></button>
+                <button class="indicator active" data-index="0" aria-label="Aller au slide 1"></button>
+                <button class="indicator" data-index="1" aria-label="Aller au slide 2"></button>
+                <button class="indicator" data-index="2" aria-label="Aller au slide 3"></button>
+                <button class="indicator" data-index="3" aria-label="Aller au slide 4"></button>
+                <button class="indicator" data-index="4" aria-label="Aller au slide 5"></button>
+                <button class="indicator" data-index="5" aria-label="Aller au slide 6"></button>
+                <button class="indicator" data-index="6" aria-label="Aller au slide 7"></button>
+                <button class="indicator" data-index="7" aria-label="Aller au slide 8"></button>
             </div>
         </div>
     </section>
@@ -186,9 +190,9 @@
     <!-- Methodology Section -->
     <section class="methodology">
         <div class="methodology-container">
-            <span class="methodology-label">Our Methodology</span>
-            <h2 class="methodology-title">Our Professional 4-Step Process</h2>
-            <p class="methodology-subtitle">We provide expert oversight at every critical stage of your visa journey.</p>
+            <span class="methodology-label" data-i18n="method.label">Notre Méthodologie</span>
+            <h2 class="methodology-title" data-i18n="method.title">Notre Processus Professionnel en 4 Étapes</h2>
+            <p class="methodology-subtitle" data-i18n="method.subtitle">Nous assurons un suivi expert à chaque étape critique de votre parcours de visa.</p>
 
             <div class="process-steps">
                 <div class="process-line"></div>
@@ -200,17 +204,17 @@
 
                 <div class="process-step">
                     <div class="step-circle">2</div>
-                    <span class="step-label">PAYMENT</span>
+                    <span class="step-label" data-i18n="method.step.2">PAIEMENT</span>
                 </div>
 
                 <div class="process-step">
                     <div class="step-circle">3</div>
-                    <span class="step-label">BOOKING</span>
+                    <span class="step-label" data-i18n="method.step.3">RÉSERVATION</span>
                 </div>
 
                 <div class="process-step">
                     <div class="step-circle">4</div>
-                    <span class="step-label">INTERVIEW</span>
+                    <span class="step-label" data-i18n="method.step.4">ENTRETIEN</span>
                 </div>
             </div>
         </div>
@@ -222,48 +226,48 @@
             <!-- Card 1: DS-160 -->
             <div class="step-card">
                 <div class="card-description">
-                    <div class="card-tagline">Step 01</div>
-                    <h3 class="card-title">DS-160 Form</h3>
-                    <p class="card-excerpt">We guide you through completing the DS-160 application form with precision and accuracy, ensuring all information is correctly entered.</p>
+                    <div class="card-tagline" data-i18n="card.tag.1">Étape 01</div>
+                    <h3 class="card-title" data-i18n="card.title.1">Formulaire DS-160</h3>
+                    <p class="card-excerpt" data-i18n="card.desc.1">Nous vous guidons dans le remplissage du formulaire de demande DS-160 avec précision et exactitude, en veillant à ce que toutes les informations soient correctement saisies.</p>
                 </div>
                 <figure class="card-figure">
-                    <img src="ds160mockup.jpg" alt="DS-160 Form">
+                    <img src="ds160mockup.jpg" alt="Formulaire DS-160">
                 </figure>
             </div>
 
             <!-- Card 2: Payment -->
             <div class="step-card">
                 <div class="card-description">
-                    <div class="card-tagline">Step 02</div>
-                    <h3 class="card-title">Payment Processing</h3>
-                    <p class="card-excerpt">Secure payment handling through our trusted agency partners, with transparent fees and confirmation tracking.</p>
+                    <div class="card-tagline" data-i18n="card.tag.2">Étape 02</div>
+                    <h3 class="card-title" data-i18n="card.title.2">Traitement du Paiement</h3>
+                    <p class="card-excerpt" data-i18n="card.desc.2">Gestion sécurisée des paiements via nos agences partenaires de confiance, avec des frais transparents et un suivi de confirmation.</p>
                 </div>
                 <figure class="card-figure">
-                    <img src="agencyim.jpg" alt="Payment Processing">
+                    <img src="agencyim.jpg" alt="Traitement du Paiement">
                 </figure>
             </div>
 
             <!-- Card 3: Booking -->
             <div class="step-card">
                 <div class="card-description">
-                    <div class="card-tagline">Step 03</div>
-                    <h3 class="card-title">Interview Booking</h3>
-                    <p class="card-excerpt">We help you schedule your visa interview at the nearest U.S. Embassy or Consulate at a convenient time.</p>
+                    <div class="card-tagline" data-i18n="card.tag.3">Étape 03</div>
+                    <h3 class="card-title" data-i18n="card.title.3">Réservation d'Entretien</h3>
+                    <p class="card-excerpt" data-i18n="card.desc.3">Nous vous aidons à planifier votre entretien de visa à l'ambassade ou au consulat américain le plus proche, à un horaire qui vous convient.</p>
                 </div>
                 <figure class="card-figure">
-                    <img src="assets/images/calendar.jpg" alt="Interview Booking">
+                    <img src="assets/images/calendar.jpg" alt="Réservation d'Entretien">
                 </figure>
             </div>
 
             <!-- Card 4: Interview -->
             <div class="step-card">
                 <div class="card-description">
-                    <div class="card-tagline">Step 04</div>
-                    <h3 class="card-title">Interview Preparation</h3>
-                    <p class="card-excerpt">Comprehensive 45-minute interview coaching and preparation to ensure you're confident and ready for your visa interview.</p>
+                    <div class="card-tagline" data-i18n="card.tag.4">Étape 04</div>
+                    <h3 class="card-title" data-i18n="card.title.4">Préparation à l'Entretien</h3>
+                    <p class="card-excerpt" data-i18n="card.desc.4">Coaching complet de 45 minutes et préparation à l'entretien pour vous assurer d'être confiant et prêt pour votre entretien de visa.</p>
                 </div>
                 <figure class="card-figure">
-                    <img src="meeting.jpg" alt="Interview Preparation">
+                    <img src="meeting.jpg" alt="Préparation à l'Entretien">
                 </figure>
             </div>
         </div>
@@ -272,11 +276,11 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-card">
-            <h2 class="cta-title">READY FOR YOUR AMERICAN ADVENTURE</h2>
-            <p class="cta-subtitle">Join thousands of travelers who successfully navigated the U.S. visa process with our professional guidance.</p>
+            <h2 class="cta-title" data-i18n="cta.title">PRÊT POUR VOTRE AVENTURE AMÉRICAINE</h2>
+            <p class="cta-subtitle" data-i18n="cta.subtitle">Rejoignez des milliers de voyageurs qui ont réussi le processus de visa américain grâce à notre accompagnement professionnel.</p>
             <div class="cta-buttons">
-                <a href="book.html" class="btn-cta-primary">GET STARTED</a>
-                <a href="book.html" class="btn-cta-outline">CONTACT AN EXPERT</a>
+                <a href="book.html" class="btn-cta-primary" data-i18n="cta.btn.primary">COMMENCER</a>
+                <a href="book.html" class="btn-cta-outline" data-i18n="cta.btn.outline">CONTACTER UN EXPERT</a>
             </div>
         </div>
     </section>
@@ -286,7 +290,7 @@
         <div class="footer-container">
             <div class="footer-col footer-brand">
                 <img src="assets/images/visalogo2.png" alt="TruePathVisa Logo" class="footer-logo">
-                <p class="footer-desc">Your trusted partner for navigating the U.S. visa process with confidence and ease.</p>
+                <p class="footer-desc" data-i18n="footer.desc">Votre partenaire de confiance pour naviguer le processus de visa américain en toute confiance et simplicité.</p>
                 <div class="footer-socials">
                     <a href="#" class="social-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557a9.83 9.83 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.384 4.482A13.944 13.944 0 011.671 3.149a4.916 4.916 0 001.523 6.574 4.897 4.897 0 01-2.229-.616v.062a4.918 4.918 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.919 4.919 0 004.6 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 14.002-7.496 14.002-13.986 0-.21 0-.423-.015-.634A9.935 9.935 0 0024 4.557z"/></svg>
@@ -301,40 +305,41 @@
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Quick Links</h4>
+                <h4 class="footer-heading" data-i18n="footer.quicklinks">Liens rapides</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="requirements.html">Requirements</a></li>
-                    <li><a href="payment.html">Payment</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="index.html" data-i18n="footer.link.home">Accueil</a></li>
+                    <li><a href="requirements.html" data-i18n="footer.link.requirements">Documents requis</a></li>
+                    <li><a href="payment.html" data-i18n="footer.link.payment">Paiement</a></li>
+                    <li><a href="faq.html" data-i18n="footer.link.faq">FAQ</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Our Services</h4>
+                <h4 class="footer-heading" data-i18n="footer.services">Nos services</h4>
                 <ul class="footer-links">
-                    <li><a href="#">DS-160 Assistance</a></li>
-                    <li><a href="#">Payment Processing</a></li>
-                    <li><a href="#">Interview Booking</a></li>
-                    <li><a href="#">Interview Preparation</a></li>
+                    <li><a href="#" data-i18n="footer.service.ds160">Assistance DS-160</a></li>
+                    <li><a href="#" data-i18n="footer.service.payment">Traitement des paiements</a></li>
+                    <li><a href="#" data-i18n="footer.service.booking">Réservation d'entretien</a></li>
+                    <li><a href="#" data-i18n="footer.service.interview">Préparation à l'entretien</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Contact</h4>
+                <h4 class="footer-heading" data-i18n="footer.contact">Contact</h4>
                 <ul class="footer-links">
                     <li>info@truepathvisa.com</li>
                     <li>+1 (800) 123-4567</li>
-                    <li>Mon - Fri: 9AM - 6PM</li>
+                    <li data-i18n="footer.hours">Lun - Ven : 9h - 18h</li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 TruePathVisa. All rights reserved.</p>
+            <p data-i18n="footer.copyright">&copy; 2026 TruePathVisa. Tous droits réservés.</p>
         </div>
     </footer>
 
+    <script src="assets/js/translations.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TruePathVisa - Book Consultation</title>
+    <title>TruePathVisa - Réserver une consultation</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,16 +19,20 @@
 
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="requirements.html" class="nav-link">Requirements</a></li>
-                    <li><a href="payment.html" class="nav-link">Payment</a></li>
-                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                    <li><a href="index.html" class="nav-link" data-i18n="nav.home">Accueil</a></li>
+                    <li><a href="requirements.html" class="nav-link" data-i18n="nav.requirements">Documents requis</a></li>
+                    <li><a href="payment.html" class="nav-link" data-i18n="nav.payment">Paiement</a></li>
+                    <li><a href="faq.html" class="nav-link" data-i18n="nav.faq">FAQ</a></li>
                 </ul>
             </nav>
 
-            <a href="book.html" class="btn btn-primary">Book consultation</a>
+            <div class="lang-toggle">
+                <span class="lang-option" data-lang="fr">FR</span>
+                <span class="lang-option" data-lang="en">EN</span>
+            </div>
+            <a href="book.html" class="btn btn-primary" data-i18n="nav.book">Réserver une consultation</a>
 
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <button class="mobile-menu-btn" aria-label="Basculer le menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -39,55 +43,55 @@
     <!-- Book Consultation -->
     <section class="book-section">
         <div class="book-section-inner">
-            <h2 class="book-title">Book Your 1-on-1 Expert<br>Consultation</h2>
-            <p class="book-subtitle">Get personalized guidance from former consular officers and visa specialists to maximize your B1/B2 approval chances.</p>
-            <h3 class="book-step-heading">1. Select a Date & Time</h3>
+            <h2 class="book-title" data-i18n-html="book.title">Réservez votre consultation<br>individuelle avec un expert</h2>
+            <p class="book-subtitle" data-i18n="book.subtitle">Bénéficiez de conseils personnalisés d'anciens agents consulaires et de spécialistes des visas pour maximiser vos chances d'approbation B1/B2.</p>
+            <h3 class="book-step-heading" data-i18n="book.step1">1. Sélectionnez une date et une heure</h3>
             <div class="book-card">
                 <div class="book-calendar">
                     <div class="book-calendar-header">
                         <span class="book-calendar-month"></span>
                         <div class="book-calendar-nav">
-                            <button class="book-cal-prev" aria-label="Previous month">&lt;</button>
-                            <button class="book-cal-next" aria-label="Next month">&gt;</button>
+                            <button class="book-cal-prev" aria-label="Mois précédent">&lt;</button>
+                            <button class="book-cal-next" aria-label="Mois suivant">&gt;</button>
                         </div>
                     </div>
                     <div class="book-calendar-grid"></div>
                 </div>
                 <div class="book-slots">
-                    <h4 class="book-slots-title">Available Slots</h4>
+                    <h4 class="book-slots-title" data-i18n="book.slots.title">Créneaux disponibles</h4>
                     <div class="book-slots-grid">
-                        <button class="book-slot">09:00 AM</button>
-                        <button class="book-slot">09:15 AM</button>
-                        <button class="book-slot">09:30 AM</button>
-                        <button class="book-slot">09:45 AM</button>
-                        <button class="book-slot">10:00 AM</button>
-                        <button class="book-slot">10:15 AM</button>
-                        <button class="book-slot">10:30 AM</button>
-                        <button class="book-slot">10:45 AM</button>
-                        <button class="book-slot">11:00 AM</button>
-                        <button class="book-slot">11:15 AM</button>
-                        <button class="book-slot">11:30 AM</button>
-                        <button class="book-slot">11:45 AM</button>
-                        <button class="book-slot">12:00 PM</button>
-                        <button class="book-slot">12:15 PM</button>
-                        <button class="book-slot">12:30 PM</button>
-                        <button class="book-slot">12:45 PM</button>
-                        <button class="book-slot">01:00 PM</button>
-                        <button class="book-slot">01:15 PM</button>
-                        <button class="book-slot">01:30 PM</button>
-                        <button class="book-slot">01:45 PM</button>
-                        <button class="book-slot">02:00 PM</button>
-                        <button class="book-slot">02:15 PM</button>
-                        <button class="book-slot">02:30 PM</button>
-                        <button class="book-slot">02:45 PM</button>
-                        <button class="book-slot">03:00 PM</button>
-                        <button class="book-slot">03:15 PM</button>
-                        <button class="book-slot">03:30 PM</button>
-                        <button class="book-slot">03:45 PM</button>
-                        <button class="book-slot">04:00 PM</button>
-                        <button class="book-slot">04:15 PM</button>
-                        <button class="book-slot">04:30 PM</button>
-                        <button class="book-slot">04:45 PM</button>
+                        <button class="book-slot">09:00</button>
+                        <button class="book-slot">09:15</button>
+                        <button class="book-slot">09:30</button>
+                        <button class="book-slot">09:45</button>
+                        <button class="book-slot">10:00</button>
+                        <button class="book-slot">10:15</button>
+                        <button class="book-slot">10:30</button>
+                        <button class="book-slot">10:45</button>
+                        <button class="book-slot">11:00</button>
+                        <button class="book-slot">11:15</button>
+                        <button class="book-slot">11:30</button>
+                        <button class="book-slot">11:45</button>
+                        <button class="book-slot">12:00</button>
+                        <button class="book-slot">12:15</button>
+                        <button class="book-slot">12:30</button>
+                        <button class="book-slot">12:45</button>
+                        <button class="book-slot">13:00</button>
+                        <button class="book-slot">13:15</button>
+                        <button class="book-slot">13:30</button>
+                        <button class="book-slot">13:45</button>
+                        <button class="book-slot">14:00</button>
+                        <button class="book-slot">14:15</button>
+                        <button class="book-slot">14:30</button>
+                        <button class="book-slot">14:45</button>
+                        <button class="book-slot">15:00</button>
+                        <button class="book-slot">15:15</button>
+                        <button class="book-slot">15:30</button>
+                        <button class="book-slot">15:45</button>
+                        <button class="book-slot">16:00</button>
+                        <button class="book-slot">16:15</button>
+                        <button class="book-slot">16:30</button>
+                        <button class="book-slot">16:45</button>
                     </div>
                 </div>
             </div>
@@ -97,35 +101,35 @@
     <!-- Your Information -->
     <section class="book-info-section">
         <div class="book-section-inner">
-            <h3 class="book-step-heading">2. Your Information</h3>
+            <h3 class="book-step-heading" data-i18n="book.step2">2. Vos informations</h3>
             <div class="book-info-card">
                 <div class="book-form-row">
                     <div class="book-form-group">
-                        <label class="book-form-label">Full Name</label>
-                        <input type="text" class="book-form-input" placeholder="John Doe">
+                        <label class="book-form-label" data-i18n="book.form.name">Nom complet</label>
+                        <input type="text" class="book-form-input" placeholder="Jean Dupont" data-i18n-placeholder="book.form.name.placeholder">
                     </div>
                     <div class="book-form-group">
-                        <label class="book-form-label">Email Address</label>
-                        <input type="email" class="book-form-input" placeholder="john@example.com">
+                        <label class="book-form-label" data-i18n="book.form.email">Adresse e-mail</label>
+                        <input type="email" class="book-form-input" placeholder="jean@exemple.com" data-i18n-placeholder="book.form.email.placeholder">
                     </div>
                 </div>
                 <div class="book-form-group">
-                    <label class="book-form-label">Phone Number (with country code)</label>
+                    <label class="book-form-label" data-i18n="book.form.phone">Numéro de téléphone (avec indicatif pays)</label>
                     <input type="tel" class="book-form-input" placeholder="+1 (555) 000-0000">
                 </div>
                 <div class="book-form-group">
-                    <label class="book-form-label">Primary Visa Concern</label>
+                    <label class="book-form-label" data-i18n="book.form.concern">Préoccupation principale concernant le visa</label>
                     <select class="book-form-select">
-                        <option>First-time applicant</option>
-                        <option>Visa renewal</option>
-                        <option>Previous denial</option>
-                        <option>Document review</option>
-                        <option>Interview preparation</option>
+                        <option data-i18n="book.form.option.1">Première demande</option>
+                        <option data-i18n="book.form.option.2">Renouvellement de visa</option>
+                        <option data-i18n="book.form.option.3">Refus précédent</option>
+                        <option data-i18n="book.form.option.4">Révision de documents</option>
+                        <option data-i18n="book.form.option.5">Préparation à l'entretien</option>
                     </select>
                 </div>
                 <div class="book-form-group">
-                    <label class="book-form-label">Briefly describe your situation</label>
-                    <textarea class="book-form-textarea" placeholder="Tell us about your visa goals or any specific questions you have..." rows="4"></textarea>
+                    <label class="book-form-label" data-i18n="book.form.situation">Décrivez brièvement votre situation</label>
+                    <textarea class="book-form-textarea" placeholder="Parlez-nous de vos objectifs de visa ou de toute question spécifique que vous avez..." rows="4" data-i18n-placeholder="book.form.situation.placeholder"></textarea>
                 </div>
                 <button class="book-submit-btn">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -134,9 +138,9 @@
                         <line x1="8" y1="2" x2="8" y2="6"></line>
                         <line x1="3" y1="10" x2="21" y2="10"></line>
                     </svg>
-                    Request Consultation
+                    <span data-i18n="book.form.submit">Demander une consultation</span>
                 </button>
-                <p class="book-disclaimer">No payment required now. Our team will contact you shortly to confirm your slot and finalize details.</p>
+                <p class="book-disclaimer" data-i18n="book.form.disclaimer">Aucun paiement requis pour le moment. Notre équipe vous contactera sous peu pour confirmer votre créneau et finaliser les détails.</p>
             </div>
         </div>
     </section>
@@ -146,7 +150,7 @@
         <div class="footer-container">
             <div class="footer-col footer-brand">
                 <img src="assets/images/visalogo2.png" alt="TruePathVisa Logo" class="footer-logo">
-                <p class="footer-desc">Your trusted partner for navigating the U.S. visa process with confidence and ease.</p>
+                <p class="footer-desc" data-i18n="footer.desc">Votre partenaire de confiance pour naviguer le processus de visa américain en toute confiance et simplicité.</p>
                 <div class="footer-socials">
                     <a href="#" class="social-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557a9.83 9.83 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.384 4.482A13.944 13.944 0 011.671 3.149a4.916 4.916 0 001.523 6.574 4.897 4.897 0 01-2.229-.616v.062a4.918 4.918 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.919 4.919 0 004.6 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 14.002-7.496 14.002-13.986 0-.21 0-.423-.015-.634A9.935 9.935 0 0024 4.557z"/></svg>
@@ -161,40 +165,41 @@
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Quick Links</h4>
+                <h4 class="footer-heading" data-i18n="footer.quicklinks">Liens rapides</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="requirements.html">Requirements</a></li>
-                    <li><a href="payment.html">Payment</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="index.html" data-i18n="footer.link.home">Accueil</a></li>
+                    <li><a href="requirements.html" data-i18n="footer.link.requirements">Documents requis</a></li>
+                    <li><a href="payment.html" data-i18n="footer.link.payment">Paiement</a></li>
+                    <li><a href="faq.html" data-i18n="footer.link.faq">FAQ</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Our Services</h4>
+                <h4 class="footer-heading" data-i18n="footer.services">Nos services</h4>
                 <ul class="footer-links">
-                    <li><a href="#">DS-160 Assistance</a></li>
-                    <li><a href="#">Payment Processing</a></li>
-                    <li><a href="#">Interview Booking</a></li>
-                    <li><a href="#">Interview Preparation</a></li>
+                    <li><a href="#" data-i18n="footer.service.ds160">Assistance DS-160</a></li>
+                    <li><a href="#" data-i18n="footer.service.payment">Traitement des paiements</a></li>
+                    <li><a href="#" data-i18n="footer.service.booking">Réservation d'entretien</a></li>
+                    <li><a href="#" data-i18n="footer.service.interview">Préparation à l'entretien</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Contact</h4>
+                <h4 class="footer-heading" data-i18n="footer.contact">Contact</h4>
                 <ul class="footer-links">
                     <li>info@truepathvisa.com</li>
                     <li>+1 (800) 123-4567</li>
-                    <li>Mon - Fri: 9AM - 6PM</li>
+                    <li data-i18n="footer.hours">Lun - Ven : 9h - 18h</li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 TruePathVisa. All rights reserved.</p>
+            <p data-i18n="footer.copyright">&copy; 2026 TruePathVisa. Tous droits réservés.</p>
         </div>
     </footer>
 
+    <script src="assets/js/translations.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

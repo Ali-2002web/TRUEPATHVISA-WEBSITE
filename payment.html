@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TruePathVisa - Payment Partners & Agency Locations</title>
+    <title>TruePathVisa - Partenaires de paiement et agences</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,16 +21,20 @@
 
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="requirements.html" class="nav-link">Requirements</a></li>
-                    <li><a href="payment.html" class="nav-link active">Payment</a></li>
-                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                    <li><a href="index.html" class="nav-link" data-i18n="nav.home">Accueil</a></li>
+                    <li><a href="requirements.html" class="nav-link" data-i18n="nav.requirements">Documents requis</a></li>
+                    <li><a href="payment.html" class="nav-link active" data-i18n="nav.payment">Paiement</a></li>
+                    <li><a href="faq.html" class="nav-link" data-i18n="nav.faq">FAQ</a></li>
                 </ul>
             </nav>
 
-            <a href="book.html" class="btn btn-primary">Book consultation</a>
+            <div class="lang-toggle">
+                <span class="lang-option" data-lang="fr">FR</span>
+                <span class="lang-option" data-lang="en">EN</span>
+            </div>
+            <a href="book.html" class="btn btn-primary" data-i18n="nav.book">Réserver une consultation</a>
 
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <button class="mobile-menu-btn" aria-label="Basculer le menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -40,8 +44,8 @@
 
     <!-- Hero Section -->
     <section class="payment-hero">
-        <h1 class="payment-title">Payment Partners &<br>Agency Locations</h1>
-        <p class="payment-subtitle">Follow our official offline payment process to complete your B1/B2 visa fee. Pay securely at thousands of authorized partner locations worldwide.</p>
+        <h1 class="payment-title" data-i18n-html="pay.title">Partenaires de paiement &<br>Agences locales</h1>
+        <p class="payment-subtitle" data-i18n="pay.subtitle">Suivez notre processus de paiement hors ligne officiel pour régler les frais de votre visa B1/B2. Payez en toute sécurité dans des milliers d'agences partenaires autorisées dans le monde entier.</p>
     </section>
 
     <!-- Process Steps -->
@@ -58,8 +62,8 @@
                     </svg>
                 </div>
                 <div class="payment-step-line"></div>
-                <h3 class="payment-step-title">1. Generate Slip</h3>
-                <p class="payment-step-desc">Download your unique CGI reference slip from the dashboard.</p>
+                <h3 class="payment-step-title" data-i18n="pay.step.1.title">1. Générer le bordereau</h3>
+                <p class="payment-step-desc" data-i18n="pay.step.1.desc">Téléchargez votre bordereau de référence CGI unique depuis le tableau de bord.</p>
             </div>
 
             <div class="payment-step">
@@ -70,8 +74,8 @@
                     </svg>
                 </div>
                 <div class="payment-step-line"></div>
-                <h3 class="payment-step-title">2. Locate Agency</h3>
-                <p class="payment-step-desc">Use the interactive map below to find an authorized partner near you.</p>
+                <h3 class="payment-step-title" data-i18n="pay.step.2.title">2. Trouver une agence</h3>
+                <p class="payment-step-desc" data-i18n="pay.step.2.desc">Utilisez la carte interactive ci-dessous pour trouver un partenaire autorisé près de chez vous.</p>
             </div>
 
             <div class="payment-step">
@@ -82,8 +86,8 @@
                     </svg>
                 </div>
                 <div class="payment-step-line"></div>
-                <h3 class="payment-step-title">3. Pay Offline</h3>
-                <p class="payment-step-desc">Visit the agent with your slip and passport to pay in cash or card.</p>
+                <h3 class="payment-step-title" data-i18n="pay.step.3.title">3. Payer hors ligne</h3>
+                <p class="payment-step-desc" data-i18n="pay.step.3.desc">Rendez-vous chez l'agent avec votre bordereau et votre passeport pour payer en espèces ou par carte.</p>
             </div>
 
             <div class="payment-step">
@@ -93,8 +97,8 @@
                         <polyline points="22 4 12 14.01 9 11.01"></polyline>
                     </svg>
                 </div>
-                <h3 class="payment-step-title">4. Validate</h3>
-                <p class="payment-step-desc">Enter your receipt number in the portal after 24 hours to book.</p>
+                <h3 class="payment-step-title" data-i18n="pay.step.4.title">4. Valider</h3>
+                <p class="payment-step-desc" data-i18n="pay.step.4.desc">Saisissez votre numéro de reçu dans le portail après 24 heures pour réserver.</p>
             </div>
         </div>
     </section>
@@ -102,11 +106,11 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-card">
-            <h2 class="cta-title">READY TO COMPLETE YOUR PAYMENT?</h2>
-            <p class="cta-subtitle">Our team is here to guide you through every step of the visa fee payment process. Get started today.</p>
+            <h2 class="cta-title" data-i18n="pay.cta.title">PRÊT À EFFECTUER VOTRE PAIEMENT ?</h2>
+            <p class="cta-subtitle" data-i18n="pay.cta.subtitle">Notre équipe est là pour vous guider à chaque étape du processus de paiement des frais de visa. Commencez dès aujourd'hui.</p>
             <div class="cta-buttons">
-                <a href="book.html" class="btn-cta-primary">GET STARTED</a>
-                <a href="book.html" class="btn-cta-outline">CONTACT AN EXPERT</a>
+                <a href="book.html" class="btn-cta-primary" data-i18n="cta.btn.primary">COMMENCER</a>
+                <a href="book.html" class="btn-cta-outline" data-i18n="cta.btn.outline">CONTACTER UN EXPERT</a>
             </div>
         </div>
     </section>
@@ -116,7 +120,7 @@
         <div class="footer-container">
             <div class="footer-col footer-brand">
                 <img src="assets/images/visalogo2.png" alt="TruePathVisa Logo" class="footer-logo">
-                <p class="footer-desc">Your trusted partner for navigating the U.S. visa process with confidence and ease.</p>
+                <p class="footer-desc" data-i18n="footer.desc">Votre partenaire de confiance pour naviguer le processus de visa américain en toute confiance et simplicité.</p>
                 <div class="footer-socials">
                     <a href="#" class="social-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557a9.83 9.83 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.384 4.482A13.944 13.944 0 011.671 3.149a4.916 4.916 0 001.523 6.574 4.897 4.897 0 01-2.229-.616v.062a4.918 4.918 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.919 4.919 0 004.6 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 14.002-7.496 14.002-13.986 0-.21 0-.423-.015-.634A9.935 9.935 0 0024 4.557z"/></svg>
@@ -131,40 +135,41 @@
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Quick Links</h4>
+                <h4 class="footer-heading" data-i18n="footer.quicklinks">Liens rapides</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="requirements.html">Requirements</a></li>
-                    <li><a href="payment.html">Payment</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="index.html" data-i18n="footer.link.home">Accueil</a></li>
+                    <li><a href="requirements.html" data-i18n="footer.link.requirements">Documents requis</a></li>
+                    <li><a href="payment.html" data-i18n="footer.link.payment">Paiement</a></li>
+                    <li><a href="faq.html" data-i18n="footer.link.faq">FAQ</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Our Services</h4>
+                <h4 class="footer-heading" data-i18n="footer.services">Nos services</h4>
                 <ul class="footer-links">
-                    <li><a href="#">DS-160 Assistance</a></li>
-                    <li><a href="#">Payment Processing</a></li>
-                    <li><a href="#">Interview Booking</a></li>
-                    <li><a href="#">Interview Preparation</a></li>
+                    <li><a href="#" data-i18n="footer.service.ds160">Assistance DS-160</a></li>
+                    <li><a href="#" data-i18n="footer.service.payment">Traitement des paiements</a></li>
+                    <li><a href="#" data-i18n="footer.service.booking">Réservation d'entretien</a></li>
+                    <li><a href="#" data-i18n="footer.service.interview">Préparation à l'entretien</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">Contact</h4>
+                <h4 class="footer-heading" data-i18n="footer.contact">Contact</h4>
                 <ul class="footer-links">
                     <li>info@truepathvisa.com</li>
                     <li>+1 (800) 123-4567</li>
-                    <li>Mon - Fri: 9AM - 6PM</li>
+                    <li data-i18n="footer.hours">Lun - Ven : 9h - 18h</li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 TruePathVisa. All rights reserved.</p>
+            <p data-i18n="footer.copyright">&copy; 2026 TruePathVisa. Tous droits réservés.</p>
         </div>
     </footer>
 
+    <script src="assets/js/translations.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
         gsap.registerPlugin(ScrollTrigger);
