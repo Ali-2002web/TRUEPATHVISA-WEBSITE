@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:pixabay.com)",
+      "WebFetch(domain:images.unsplash.com)",
+      "WebFetch(domain:www.goodfreephotos.com)"
+    ]
+  }
+}
