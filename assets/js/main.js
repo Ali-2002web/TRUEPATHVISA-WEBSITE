@@ -38,7 +38,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 class HeroSlider {
     constructor() {
         this.currentIndex = 0;
-        this.totalSlides = 4;
+        this.totalSlides = 8;
         this.autoPlayInterval = 1300; // 1.3 seconds
         this.isAnimating = false;
 
