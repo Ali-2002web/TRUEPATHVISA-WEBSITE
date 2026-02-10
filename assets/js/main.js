@@ -116,9 +116,99 @@ class HeroSlider {
     }
 }
 
+// Booking Calendar
+class BookingCalendar {
+    constructor() {
+        this.grid = document.querySelector('.book-calendar-grid');
+        this.monthLabel = document.querySelector('.book-calendar-month');
+        this.slotsTitle = document.querySelector('.book-slots-title');
+        if (!this.grid) return;
+
+        this.today = new Date();
+        this.currentMonth = this.today.getMonth();
+        this.currentYear = this.today.getFullYear();
+        this.selectedDate = new Date(this.today);
+
+        document.querySelector('.book-cal-prev').addEventListener('click', () => this.changeMonth(-1));
+        document.querySelector('.book-cal-next').addEventListener('click', () => this.changeMonth(1));
+
+        // Time slot selection
+        document.querySelectorAll('.book-slot').forEach(slot => {
+            slot.addEventListener('click', () => {
+                document.querySelectorAll('.book-slot').forEach(s => s.classList.remove('selected'));
+                slot.classList.add('selected');
+            });
+        });
+
+        this.render();
+        this.updateSlotsTitle();
+    }
+
+    changeMonth(delta) {
+        this.currentMonth += delta;
+        if (this.currentMonth > 11) { this.currentMonth = 0; this.currentYear++; }
+        if (this.currentMonth < 0) { this.currentMonth = 11; this.currentYear--; }
+        this.render();
+    }
+
+    updateSlotsTitle() {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        this.slotsTitle.textContent = 'Available Slots for ' + months[this.selectedDate.getMonth()] + ' ' + this.selectedDate.getDate();
+    }
+
+    render() {
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        this.monthLabel.textContent = months[this.currentMonth] + ' ' + this.currentYear;
+
+        const firstDay = new Date(this.currentYear, this.currentMonth, 1).getDay();
+        const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
+        const daysInPrev = new Date(this.currentYear, this.currentMonth, 0).getDate();
+
+        let html = '';
+        ['S', 'M', 'T', 'W', 'T', 'F', 'S'].forEach(d => {
+            html += '<div class="day-header">' + d + '</div>';
+        });
+
+        // Previous month filler days
+        for (let i = firstDay - 1; i >= 0; i--) {
+            html += '<div class="day-cell other-month">' + (daysInPrev - i) + '</div>';
+        }
+
+        // Current month days
+        for (let d = 1; d <= daysInMonth; d++) {
+            const isToday = d === this.today.getDate() && this.currentMonth === this.today.getMonth() && this.currentYear === this.today.getFullYear();
+            const isSelected = d === this.selectedDate.getDate() && this.currentMonth === this.selectedDate.getMonth() && this.currentYear === this.selectedDate.getFullYear();
+            let cls = 'day-cell';
+            if (isSelected) cls += ' selected';
+            else if (isToday) cls += ' today';
+            html += '<div class="' + cls + '" data-day="' + d + '">' + d + '</div>';
+        }
+
+        // Next month filler days
+        const totalCells = firstDay + daysInMonth;
+        const remaining = (7 - (totalCells % 7)) % 7;
+        for (let i = 1; i <= remaining; i++) {
+            html += '<div class="day-cell other-month">' + i + '</div>';
+        }
+
+        this.grid.innerHTML = html;
+
+        // Click handlers for day cells
+        this.grid.querySelectorAll('.day-cell:not(.other-month)').forEach(cell => {
+            cell.addEventListener('click', () => {
+                this.grid.querySelectorAll('.day-cell').forEach(c => c.classList.remove('selected'));
+                cell.classList.add('selected');
+                this.selectedDate = new Date(this.currentYear, this.currentMonth, parseInt(cell.dataset.day));
+                this.updateSlotsTitle();
+            });
+        });
+    }
+}
+
 // Initialize slider when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new HeroSlider();
+    new BookingCalendar();
 
     // Initialize GSAP ScrollTrigger for card stacking animation
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
