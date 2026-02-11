@@ -943,7 +943,7 @@ img {
 
 /* Footer */
 .footer {
-    background-color: var(--dark-blue);
+    background-color: var(--primary-blue);
     padding: 60px 40px 0;
 }
 
