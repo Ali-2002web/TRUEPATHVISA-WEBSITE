@@ -102,18 +102,18 @@ const translations = {
         "photo.note.label": "Note:",
 
         // Payment - Hero
-        "pay.title": "Payment Partners &<br>Agency Locations",
-        "pay.subtitle": "Follow our official offline payment process to complete your B1/B2 visa fee. Pay securely at thousands of authorized partner locations worldwide.",
+        "pay.title": "How the Payment<br>Process Works",
+        "pay.subtitle": "Discover the simple steps to pay your B1/B2 visa fees securely.",
 
         // Payment - Steps
-        "pay.step.1.title": "1. Generate Slip",
-        "pay.step.1.desc": "Download your unique CGI reference slip from the dashboard.",
-        "pay.step.2.title": "2. Locate Agency",
-        "pay.step.2.desc": "Use the interactive map below to find an authorized partner near you.",
-        "pay.step.3.title": "3. Pay Offline",
-        "pay.step.3.desc": "Visit the agent with your slip and passport to pay in cash or card.",
-        "pay.step.4.title": "4. Validate",
-        "pay.step.4.desc": "Enter your receipt number in the portal after 24 hours to book.",
+        "pay.step.1.title": "1. Receive CGI Reference",
+        "pay.step.1.desc": "Our agency provides you with your unique CGI reference slip to make the payment.",
+        "pay.step.2.title": "2. Visit the Agency",
+        "pay.step.2.desc": "Go to an authorized payment agency with your CGI reference slip.",
+        "pay.step.3.title": "3. Make the Payment",
+        "pay.step.3.desc": "Pay the visa fees in cash or by card at the agency. After payment, the portal unlocks within 24 hours.",
+        "pay.step.4.title": "4. Appointment Booking",
+        "pay.step.4.desc": "Once the portal is unlocked, our agency takes care of scheduling your embassy interview slot.",
 
         // Payment - CTA
         "pay.cta.title": "READY TO COMPLETE YOUR PAYMENT?",
@@ -123,6 +123,7 @@ const translations = {
         "book.title": "Book Your 1-on-1 Expert<br>Consultation",
         "book.subtitle": "Get personalized guidance from former consular officers and visa specialists to maximize your B1/B2 approval chances.",
         "book.step1": "1. Select a Date & Time",
+        "book.duration": "15-minute consultation",
         "book.slots.title": "Available Slots",
         "book.step2": "2. Your Information",
 
@@ -140,8 +141,6 @@ const translations = {
         "book.form.option.1": "First-time applicant",
         "book.form.option.2": "Visa renewal",
         "book.form.option.3": "Previous denial",
-        "book.form.option.4": "Document review",
-        "book.form.option.5": "Interview preparation",
 
         // FAQ - Hero
         "faq.title": "Frequently Asked<br>Questions",
@@ -311,18 +310,18 @@ const translations = {
         "photo.note.label": "Remarque :",
 
         // Payment - Hero
-        "pay.title": "Partenaires de paiement &<br>Agences locales",
-        "pay.subtitle": "Suivez notre processus de paiement hors ligne officiel pour r\u00e9gler les frais de votre visa B1/B2. Payez en toute s\u00e9curit\u00e9 dans des milliers d'agences partenaires autoris\u00e9es dans le monde entier.",
+        "pay.title": "Comment fonctionne<br>le processus de paiement",
+        "pay.subtitle": "D\u00e9couvrez les \u00e9tapes simples pour r\u00e9gler les frais de votre visa B1/B2 en toute s\u00e9curit\u00e9.",
 
         // Payment - Steps
-        "pay.step.1.title": "1. G\u00e9n\u00e9rer le bordereau",
-        "pay.step.1.desc": "T\u00e9l\u00e9chargez votre bordereau de r\u00e9f\u00e9rence CGI unique depuis le tableau de bord.",
-        "pay.step.2.title": "2. Trouver une agence",
-        "pay.step.2.desc": "Utilisez la carte interactive ci-dessous pour trouver un partenaire autoris\u00e9 pr\u00e8s de chez vous.",
-        "pay.step.3.title": "3. Payer hors ligne",
-        "pay.step.3.desc": "Rendez-vous chez l'agent avec votre bordereau et votre passeport pour payer en esp\u00e8ces ou par carte.",
-        "pay.step.4.title": "4. Valider",
-        "pay.step.4.desc": "Saisissez votre num\u00e9ro de re\u00e7u dans le portail apr\u00e8s 24 heures pour r\u00e9server.",
+        "pay.step.1.title": "1. Recevoir la r\u00e9f\u00e9rence CGI",
+        "pay.step.1.desc": "Notre agence vous fournit votre bordereau de r\u00e9f\u00e9rence CGI unique pour effectuer le paiement.",
+        "pay.step.2.title": "2. Se rendre en agence",
+        "pay.step.2.desc": "Rendez-vous dans une agence de paiement autoris\u00e9e avec votre bordereau CGI.",
+        "pay.step.3.title": "3. Effectuer le paiement",
+        "pay.step.3.desc": "Payez les frais de visa en esp\u00e8ces ou par carte \u00e0 l'agence. Apr\u00e8s le paiement, le portail se d\u00e9bloque sous 24 heures.",
+        "pay.step.4.title": "4. Prise de rendez-vous",
+        "pay.step.4.desc": "Une fois le portail d\u00e9bloqu\u00e9, notre agence se charge de r\u00e9server votre cr\u00e9neau d'entretien \u00e0 l'ambassade.",
 
         // Payment - CTA
         "pay.cta.title": "PR\u00caT \u00c0 EFFECTUER VOTRE PAIEMENT ?",
@@ -332,6 +331,7 @@ const translations = {
         "book.title": "R\u00e9servez votre consultation<br>individuelle avec un expert",
         "book.subtitle": "B\u00e9n\u00e9ficiez de conseils personnalis\u00e9s d'anciens agents consulaires et de sp\u00e9cialistes des visas pour maximiser vos chances d'approbation B1/B2.",
         "book.step1": "1. S\u00e9lectionnez une date et une heure",
+        "book.duration": "Consultation de 15 minutes",
         "book.slots.title": "Cr\u00e9neaux disponibles",
         "book.step2": "2. Vos informations",
 
@@ -349,8 +349,6 @@ const translations = {
         "book.form.option.1": "Premi\u00e8re demande",
         "book.form.option.2": "Renouvellement de visa",
         "book.form.option.3": "Refus pr\u00e9c\u00e9dent",
-        "book.form.option.4": "R\u00e9vision de documents",
-        "book.form.option.5": "Pr\u00e9paration \u00e0 l'entretien",
 
         // FAQ - Hero
         "faq.title": "Questions<br>fr\u00e9quemment pos\u00e9es",

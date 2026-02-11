@@ -155,66 +155,34 @@ img {
 .lang-toggle {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    padding: 4px 6px;
-    cursor: pointer;
-    gap: 2px;
+    gap: 6px;
     margin-right: 12px;
-    transition: background 0.3s;
-}
-
-.lang-toggle:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-.header-solid .lang-toggle {
-    background: rgba(26, 143, 227, 0.08);
-    border-color: rgba(26, 143, 227, 0.2);
-}
-
-.header-solid .lang-toggle:hover {
-    background: rgba(26, 143, 227, 0.15);
+    cursor: pointer;
 }
 
 .lang-option {
-    padding: 4px 10px;
-    border-radius: 16px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    color: rgba(255, 255, 255, 0.7);
+    padding: 4px;
+    border-radius: 50%;
     transition: all 0.3s;
-    letter-spacing: 0.5px;
-}
-
-.header-solid .lang-option {
-    color: var(--text-gray);
+    opacity: 0.5;
+    border: 2px solid transparent;
 }
 
 .lang-option.active {
-    background: var(--primary-blue);
-    color: #fff;
+    opacity: 1;
+    border-color: var(--primary-blue);
 }
 
-.header-solid .lang-option.active {
-    background: var(--primary-blue);
-    color: #fff;
+.lang-option:hover {
+    opacity: 1;
 }
 
-.scrolled .lang-toggle {
-    background: rgba(26, 143, 227, 0.08);
-    border-color: rgba(26, 143, 227, 0.2);
-}
-
-.scrolled .lang-option {
-    color: var(--text-gray);
-}
-
-.scrolled .lang-option.active {
-    background: var(--primary-blue);
-    color: #fff;
+.flag-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
 }
 
 /* Mobile Menu Button */
@@ -489,7 +457,7 @@ img {
 
 /* Methodology Section */
 .methodology {
-    background-color: var(--light-gray);
+    background-color: var(--white);
     padding: 30px 50px;
     text-align: center;
 }
@@ -511,7 +479,7 @@ img {
 .methodology-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--dark-blue);
+    color: var(--primary-blue);
     margin-bottom: 10px;
 }
 
@@ -789,7 +757,7 @@ img {
     font-weight: 700;
     color: var(--primary-blue);
     margin-bottom: 12px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
 }
 
 .req-subtitle {
@@ -1083,7 +1051,7 @@ img {
     color: var(--primary-blue);
     margin-bottom: 16px;
     line-height: 1.2;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
 }
 
 .payment-subtitle {
@@ -1353,7 +1321,7 @@ img {
     text-align: center;
     margin-bottom: 12px;
     line-height: 1.2;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
 }
 
 .book-subtitle {
@@ -1369,6 +1337,16 @@ img {
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--dark-blue);
+    margin-bottom: 8px;
+}
+
+.book-meeting-duration {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+    font-weight: 500;
     margin-bottom: 24px;
 }
 
@@ -1669,7 +1647,7 @@ img {
     color: var(--primary-blue);
     margin-bottom: 16px;
     line-height: 1.2;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
 }
 
 .faq-subtitle {
