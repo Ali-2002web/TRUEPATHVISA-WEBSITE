@@ -1976,12 +1976,57 @@ img {
         text-align: center;
     }
 
+    .hero-titles {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        order: -1;
+        margin-bottom: 10px;
+    }
+
+    .hero-title-bg {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        font-size: 2rem;
+        white-space: nowrap;
+    }
+
     .hero-destination {
         position: relative;
         left: auto;
         bottom: auto;
         text-align: center;
         padding-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .destination-label {
+        position: relative;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transform: none;
+    }
+
+    .destination-label.active {
+        display: flex;
+        transform: none;
+    }
+
+    .destination-label span {
+        font-size: 1.1rem;
+    }
+
+    .label-line {
+        display: none;
+    }
+
+    .label-line-horizontal {
+        width: 60px;
     }
 
     .hero-circle-image {
@@ -1991,6 +2036,16 @@ img {
         display: flex;
         justify-content: center;
         margin-top: 30px;
+    }
+
+    .slide-indicators {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        justify-content: center;
+        width: 100%;
+        margin-top: 40px;
     }
 
     .circle-decoration {
@@ -2061,7 +2116,7 @@ img {
     }
 
     .hero-title-bg {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
 
     .destination-label span {
@@ -2216,7 +2271,7 @@ img {
     }
 
     .hero-title-bg {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .circle-images-wrapper {
