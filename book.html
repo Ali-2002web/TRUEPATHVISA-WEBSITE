@@ -198,7 +198,72 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="assets/js/translations.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        emailjs.init('BwEc0kZUMgGkGMZpm');
+
+        var submitBtn = document.querySelector('.book-submit-btn');
+        var submitBtnText = submitBtn.querySelector('span');
+
+        submitBtn.addEventListener('click', function () {
+            var inputs = document.querySelectorAll('.book-form-input');
+            var name = inputs[0].value.trim();
+            var email = inputs[1].value.trim();
+            var phone = inputs[2].value.trim();
+            var concern = document.querySelector('.book-form-select').value;
+            var situation = document.querySelector('.book-form-textarea').value.trim();
+
+            var selectedDate = document.querySelector('.book-calendar-grid .selected');
+            var selectedSlot = document.querySelector('.book-slot.active');
+
+            if (!name || !email || !phone) {
+                showFormMessage('error', currentLang === 'fr' ? 'Veuillez remplir tous les champs obligatoires.' : 'Please fill in all required fields.');
+                return;
+            }
+
+            if (!selectedDate || !selectedSlot) {
+                showFormMessage('error', currentLang === 'fr' ? 'Veuillez sélectionner une date et un créneau horaire.' : 'Please select a date and time slot.');
+                return;
+            }
+
+            var dateText = selectedDate.getAttribute('data-date') || selectedDate.textContent;
+            var timeText = selectedSlot.textContent;
+
+            submitBtn.disabled = true;
+            submitBtnText.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+
+            emailjs.send('service_7w5jowu', 'template_3kwasqo', {
+                from_name: name,
+                from_email: email,
+                phone: phone,
+                concern: concern,
+                situation: situation,
+                date: dateText,
+                time: timeText
+            }).then(function () {
+                showFormMessage('success', currentLang === 'fr' ? 'Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.' : 'Your request has been sent successfully! We will contact you soon.');
+                submitBtnText.textContent = currentLang === 'fr' ? 'Demande envoyée !' : 'Request sent!';
+                submitBtn.classList.add('sent');
+            }, function (error) {
+                showFormMessage('error', currentLang === 'fr' ? 'Une erreur est survenue. Veuillez réessayer.' : 'An error occurred. Please try again.');
+                submitBtn.disabled = false;
+                submitBtnText.textContent = currentLang === 'fr' ? 'Demander une consultation' : 'Request a consultation';
+            });
+        });
+
+        function showFormMessage(type, text) {
+            var existing = document.querySelector('.book-form-message');
+            if (existing) existing.remove();
+
+            var msg = document.createElement('p');
+            msg.className = 'book-form-message ' + type;
+            msg.textContent = text;
+            submitBtn.parentElement.insertBefore(msg, submitBtn.nextSibling);
+
+            setTimeout(function () { msg.remove(); }, 6000);
+        }
+    </script>
 </body>
 </html>
