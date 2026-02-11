@@ -1961,33 +1961,50 @@ img {
         display: none;
     }
 
+    .hero {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        padding: 120px 20px 40px;
+    }
+
     .hero-content {
         padding: 0 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .hero-destination {
-        left: 30px;
-        bottom: 40%;
+        position: relative;
+        left: auto;
+        bottom: auto;
+        text-align: center;
+        padding-top: 30px;
     }
 
     .hero-circle-image {
-        right: 30px;
-        bottom: 10%;
+        position: relative;
+        right: auto;
+        bottom: auto;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
     }
 
     .circle-decoration {
-        width: 280px;
-        height: 280px;
+        display: none;
     }
 
     .circle-images-wrapper {
-        width: 220px;
-        height: 220px;
+        width: 210px;
+        height: 210px;
     }
 
     .circle-image-container {
-        width: 220px;
-        height: 220px;
+        width: 210px;
+        height: 210px;
     }
 
     .steps-layout {
@@ -2044,7 +2061,7 @@ img {
     }
 
     .hero-title-bg {
-        font-size: 3rem;
+        font-size: 2.2rem;
     }
 
     .destination-label span {
@@ -2053,58 +2070,6 @@ img {
 
     .label-line-horizontal {
         width: 80px;
-    }
-
-    .hero-circle-image {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        display: flex;
-        justify-content: center;
-        margin-top: 50px;
-    }
-
-    .hero-destination {
-        position: relative;
-        left: auto;
-        bottom: auto;
-        text-align: center;
-        padding-top: 150px;
-    }
-
-    .destination-label {
-        flex-direction: column;
-        position: relative;
-    }
-
-    .destination-label.active {
-        position: relative;
-    }
-
-    .label-line {
-        width: 80px;
-        height: 3px;
-    }
-
-    .circle-decoration {
-        display: none;
-    }
-
-    .circle-images-wrapper {
-        width: 250px;
-        height: 250px;
-    }
-
-    .circle-image-container {
-        width: 250px;
-        height: 250px;
-    }
-
-    .hero-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
     }
 
     .slide-indicators {
@@ -2160,7 +2125,7 @@ img {
 
     /* Payment Page */
     .payment-hero {
-        padding: 120px 20px 40px;
+        padding: 140px 20px 40px;
     }
 
     .payment-title {
@@ -2169,6 +2134,8 @@ img {
 
     .payment-subtitle {
         font-size: 0.9rem;
+        max-width: 100%;
+        padding: 0 10px;
     }
 
     .payment-process {
@@ -2248,22 +2215,18 @@ img {
         font-size: 0.85rem;
     }
 
-    .hero {
-        min-height: 500px;
-    }
-
     .hero-title-bg {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .circle-images-wrapper {
-        width: 200px;
-        height: 200px;
+        width: 170px;
+        height: 170px;
     }
 
     .circle-image-container {
-        width: 200px;
-        height: 200px;
+        width: 170px;
+        height: 170px;
     }
 
     .methodology {
