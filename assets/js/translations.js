@@ -205,7 +205,18 @@ const translations = {
         "cal.months.short": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         "cal.months.long": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         "cal.days": ["S", "M", "T", "W", "T", "F", "S"],
-        "cal.slots.prefix": "Available Slots for "
+        "cal.slots.prefix": "Available Slots for ",
+
+        // Chatbot
+        "chat.name": "TruePathVisa Assistant",
+        "chat.status": "Online",
+        "chat.greeting": "Hello! I'm here to help you with the U.S. visa process. What would you like to know?",
+        "chat.cat.general": "General Questions",
+        "chat.cat.ds160": "DS-160 Application",
+        "chat.cat.payment": "Payment & Fees",
+        "chat.cat.interview": "Interview",
+        "chat.back": "Back to topics",
+        "chat.book": "Book a consultation"
     },
     fr: {
         // Nav
@@ -413,6 +424,17 @@ const translations = {
         "cal.months.short": ["Jan", "F\u00e9v", "Mar", "Avr", "Mai", "Juin", "Juil", "Ao\u00fbt", "Sep", "Oct", "Nov", "D\u00e9c"],
         "cal.months.long": ["Janvier", "F\u00e9vrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Ao\u00fbt", "Septembre", "Octobre", "Novembre", "D\u00e9cembre"],
         "cal.days": ["D", "L", "M", "M", "J", "V", "S"],
-        "cal.slots.prefix": "Cr\u00e9neaux disponibles pour le "
+        "cal.slots.prefix": "Cr\u00e9neaux disponibles pour le ",
+
+        // Chatbot
+        "chat.name": "Assistant TruePathVisa",
+        "chat.status": "En ligne",
+        "chat.greeting": "Bonjour ! Je suis l\u00e0 pour vous aider avec le processus de visa am\u00e9ricain. Que souhaitez-vous savoir ?",
+        "chat.cat.general": "Questions g\u00e9n\u00e9rales",
+        "chat.cat.ds160": "Formulaire DS-160",
+        "chat.cat.payment": "Paiement & Frais",
+        "chat.cat.interview": "Entretien",
+        "chat.back": "Retour aux sujets",
+        "chat.book": "R\u00e9server une consultation"
     }
 };
