@@ -2092,18 +2092,10 @@ img {
     }
 
     /* Steps Cards Responsive */
-    .cards-container {
-        gap: 30px;
-    }
-
     .step-card {
         grid-template-columns: 1fr;
         height: auto;
         min-height: auto;
-    }
-
-    .step-card:first-child {
-        margin-top: 0;
     }
 
     .card-description {
