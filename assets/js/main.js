@@ -345,21 +345,51 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Animate methodology section steps
+        // Highlight process steps and align circles with their cards
         const processSteps = document.querySelectorAll('.process-step');
-        processSteps.forEach((step, index) => {
-            gsap.from(step, {
-                scrollTrigger: {
-                    trigger: step,
-                    start: 'top 90%',
-                    toggleActions: 'play none none reverse'
-                },
-                opacity: 0,
-                y: 30,
-                duration: 0.5,
-                delay: index * 0.15,
-                ease: 'power3.out'
+        if (cards.length > 0 && processSteps.length > 0) {
+            const stepsEl = document.querySelector('.process-steps');
+            const sidebarPadding = 80;
+
+            // Pre-compute each circle's center Y relative to .process-steps
+            const circleOffsets = [];
+            processSteps.forEach((step) => {
+                const circle = step.querySelector('.step-circle');
+                circleOffsets.push(step.offsetTop + circle.offsetHeight / 2);
             });
-        });
+
+            processSteps[0].classList.add('active');
+
+            function alignCircle(index) {
+                // Card is pinned at top, 60vh tall, center at 30vh
+                var targetY = window.innerHeight * 0.3;
+                var circleY = sidebarPadding + circleOffsets[index];
+                gsap.to(stepsEl, {
+                    y: targetY - circleY,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                });
+            }
+
+            cards.forEach((card, index) => {
+                if (processSteps[index]) {
+                    ScrollTrigger.create({
+                        trigger: card,
+                        start: 'top 60%',
+                        end: 'bottom 40%',
+                        onEnter: () => {
+                            processSteps.forEach(s => s.classList.remove('active'));
+                            processSteps[index].classList.add('active');
+                            alignCircle(index);
+                        },
+                        onEnterBack: () => {
+                            processSteps.forEach(s => s.classList.remove('active'));
+                            processSteps[index].classList.add('active');
+                            alignCircle(index);
+                        }
+                    });
+                }
+            });
+        }
     }
 });

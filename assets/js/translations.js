@@ -58,9 +58,9 @@ const translations = {
         "card.title.2": "Payment Processing",
         "card.title.3": "Interview Booking",
         "card.title.4": "Interview Preparation",
-        "card.desc.1": "We guide you through completing the DS-160 application form with precision and accuracy, ensuring all information is correctly entered.",
-        "card.desc.2": "Secure payment handling through our trusted agency partners, with transparent fees and confirmation tracking.",
-        "card.desc.3": "We help you schedule your visa interview at the nearest U.S. Embassy or Consulate at a convenient time.",
+        "card.desc.1": "Our agency takes full charge of completing your DS-160 form with precision and accuracy, ensuring all information is correctly entered to maximize your approval chances.",
+        "card.desc.2": "You visit the agency to pay the consular and service fees securely, with transparent pricing and confirmation tracking.",
+        "card.desc.3": "We schedule your visa interview at the U.S. Embassy or Consulate at a time that suits you, targeting the earliest available dates to speed up the process.",
         "card.desc.4": "Comprehensive 45-minute interview coaching and preparation to ensure you're confident and ready for your visa interview.",
 
         // Index - CTA
@@ -267,9 +267,9 @@ const translations = {
         "card.title.2": "Traitement du Paiement",
         "card.title.3": "R\u00e9servation d'Entretien",
         "card.title.4": "Pr\u00e9paration \u00e0 l'Entretien",
-        "card.desc.1": "Nous vous guidons dans le remplissage du formulaire de demande DS-160 avec pr\u00e9cision et exactitude, en veillant \u00e0 ce que toutes les informations soient correctement saisies.",
-        "card.desc.2": "Gestion s\u00e9curis\u00e9e des paiements via nos agences partenaires de confiance, avec des frais transparents et un suivi de confirmation.",
-        "card.desc.3": "Nous vous aidons \u00e0 planifier votre entretien de visa \u00e0 l'ambassade ou au consulat am\u00e9ricain le plus proche, \u00e0 un horaire qui vous convient.",
+        "card.desc.1": "Notre agence se charge enti\u00e8rement du remplissage de votre formulaire DS-160 avec pr\u00e9cision et exactitude, en veillant \u00e0 ce que toutes les informations soient correctement saisies pour maximiser vos chances d'approbation.",
+        "card.desc.2": "Vous vous rendez \u00e0 l'agence pour r\u00e9gler les frais consulaires et de service en toute s\u00e9curit\u00e9, avec des frais transparents et un suivi de confirmation.",
+        "card.desc.3": "Nous vous planifions l'entretien de visa \u00e0 l'ambassade ou au consulat am\u00e9ricain, \u00e0 un horaire qui vous convient, en ciblant les dates disponibles les plus proches pour acc\u00e9l\u00e9rer le processus.",
         "card.desc.4": "Coaching complet de 45 minutes et pr\u00e9paration \u00e0 l'entretien pour vous assurer d'\u00eatre confiant et pr\u00eat pour votre entretien de visa.",
 
         // Index - CTA
