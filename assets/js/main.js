@@ -665,30 +665,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Card stacking animation
         const cards = gsap.utils.toArray(".step-card");
-        const isMobile = window.innerWidth <= 992;
 
         if (cards.length > 0) {
             const lastCardIndex = cards.length - 1;
 
-            // Create ScrollTrigger for the last card
             const lastCardST = ScrollTrigger.create({
                 trigger: cards[cards.length - 1],
                 start: "center center"
             });
 
-            // Iterate over each card
             cards.forEach((card, index) => {
+                card.style.zIndex = index + 1;
                 const scale = index === lastCardIndex ? 1 : 0.9;
-                const scaleDown = gsap.to(card, {
-                    scale: scale
-                });
+                const scaleDown = gsap.to(card, { scale: scale });
 
                 ScrollTrigger.create({
                     trigger: card,
                     start: "top top",
                     end: () => lastCardST.start,
                     pin: true,
-                    pinSpacing: isMobile,
+                    pinSpacing: false,
                     scrub: 0.5,
                     ease: "none",
                     animation: scaleDown,
