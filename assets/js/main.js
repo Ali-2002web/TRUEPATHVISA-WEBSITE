@@ -663,10 +663,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Card stacking animation
+        // Card stacking animation (desktop only)
         const cards = gsap.utils.toArray(".step-card");
+        const isMobile = window.innerWidth <= 992;
 
-        if (cards.length > 0) {
+        if (cards.length > 0 && !isMobile) {
             const lastCardIndex = cards.length - 1;
 
             // Create ScrollTrigger for the last card
