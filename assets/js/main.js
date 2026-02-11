@@ -261,7 +261,8 @@ class BookingCalendar {
             let cls = 'day-cell';
             if (isSelected) cls += ' selected';
             else if (isToday) cls += ' today';
-            html += '<div class="' + cls + '" data-day="' + d + '">' + d + '</div>';
+            const fullDate = d + '/' + (this.currentMonth + 1) + '/' + this.currentYear;
+            html += '<div class="' + cls + '" data-day="' + d + '" data-date="' + fullDate + '">' + d + '</div>';
         }
 
         // Next month filler days
