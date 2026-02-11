@@ -84,11 +84,51 @@ window.addEventListener('scroll', () => {
 // Mobile menu toggle
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const nav = document.querySelector('.nav');
+const navParent = nav ? nav.parentElement : null;
+const navNextSibling = nav ? nav.nextElementSibling : null;
 
-if (mobileMenuBtn) {
+if (mobileMenuBtn && nav) {
+    // Add "Book consultation" button inside mobile nav
+    const mobileBookBtn = document.createElement('a');
+    mobileBookBtn.href = 'book.html';
+    mobileBookBtn.className = 'mobile-book-btn';
+    mobileBookBtn.setAttribute('data-i18n', 'nav.book');
+    mobileBookBtn.textContent = getCurrentLang() === 'en' ? 'Book a consultation' : 'Réserver une consultation';
+    nav.appendChild(mobileBookBtn);
+
+    function openMobileMenu() {
+        // Move nav to body so backdrop-filter on header doesn't break fixed positioning
+        document.body.appendChild(nav);
+        nav.classList.add('active');
+        mobileMenuBtn.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+        nav.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        document.body.style.overflow = '';
+        // Move nav back into header
+        if (navNextSibling) {
+            navParent.insertBefore(nav, navNextSibling);
+        } else {
+            navParent.appendChild(nav);
+        }
+    }
+
     mobileMenuBtn.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        mobileMenuBtn.classList.toggle('active');
+        if (nav.classList.contains('active')) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    });
+
+    // Close mobile menu when a nav link is clicked
+    nav.querySelectorAll('.nav-link, .mobile-book-btn').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
     });
 }
 
@@ -401,18 +441,104 @@ class ChatbotWidget {
                 '<button class="chatbot-close"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>' +
             '</div>' +
             '<div class="chatbot-messages"></div>' +
-            '<div class="chatbot-suggestions"></div>';
+            '<div class="chatbot-suggestions"></div>' +
+            '<div class="chatbot-input-bar">' +
+                '<input type="text" class="chatbot-input" placeholder="">' +
+                '<button class="chatbot-send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>' +
+            '</div>';
+
+        // Notification bubble
+        this.bubble = document.createElement('div');
+        this.bubble.className = 'chatbot-bubble';
+        this.bubble.innerHTML = '<button class="chatbot-bubble-close">&times;</button><span class="chatbot-bubble-text"></span>';
 
         document.body.appendChild(this.toggle);
         document.body.appendChild(this.window);
+        document.body.appendChild(this.bubble);
 
         this.messagesEl = this.window.querySelector('.chatbot-messages');
         this.suggestionsEl = this.window.querySelector('.chatbot-suggestions');
+        this.inputEl = this.window.querySelector('.chatbot-input');
+        this.sendBtn = this.window.querySelector('.chatbot-send');
+        this.updateBubbleText();
+        this.updateInputPlaceholder();
+    }
+
+    updateBubbleText() {
+        var lang = getCurrentLang();
+        this.bubble.querySelector('.chatbot-bubble-text').textContent = lang === 'fr' ? 'Besoin d\u2019aide pour votre visa ?' : 'Need help with your visa?';
     }
 
     bindEvents() {
         this.toggle.addEventListener('click', () => this.toggleChat());
         this.window.querySelector('.chatbot-close').addEventListener('click', () => this.toggleChat());
+        this.bubble.querySelector('.chatbot-bubble-text').addEventListener('click', () => {
+            this.bubble.classList.add('hidden');
+            if (!this.isOpen) this.toggleChat();
+        });
+        this.bubble.querySelector('.chatbot-bubble-close').addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.bubble.classList.add('hidden');
+        });
+        this.sendBtn.addEventListener('click', () => this.handleUserInput());
+        this.inputEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') this.handleUserInput();
+        });
+    }
+
+    updateInputPlaceholder() {
+        var lang = getCurrentLang();
+        this.inputEl.placeholder = lang === 'fr' ? 'Tapez votre question...' : 'Type your question...';
+    }
+
+    handleUserInput() {
+        var text = this.inputEl.value.trim();
+        if (!text) return;
+        this.addMessage(text, 'user');
+        this.inputEl.value = '';
+        this.findAnswer(text);
+    }
+
+    findAnswer(query) {
+        var lang = getCurrentLang();
+        var lowerQuery = query.toLowerCase();
+        var bestMatch = null;
+        var bestScore = 0;
+        var self = this;
+
+        // Search all FAQ categories for the best matching question
+        Object.keys(this.faqData).forEach(function(cat) {
+            var items = self.faqData[cat][lang];
+            items.forEach(function(item) {
+                var score = self.getMatchScore(lowerQuery, item.q.toLowerCase());
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMatch = item;
+                }
+            });
+        });
+
+        if (bestMatch && bestScore >= 2) {
+            this.addMessage(bestMatch.a, 'bot');
+            this.showAfterAnswer(null);
+        } else {
+            var noAnswer = lang === 'fr'
+                ? 'Je n\'ai pas trouv\u00e9 de r\u00e9ponse exacte. Veuillez choisir un sujet ci-dessous ou r\u00e9server une consultation pour une aide personnalis\u00e9e.'
+                : 'I couldn\'t find an exact answer. Please choose a topic below or book a consultation for personalized help.';
+            this.addMessage(noAnswer, 'bot');
+            this.showCategories();
+        }
+    }
+
+    getMatchScore(query, question) {
+        var queryWords = query.split(/\s+/);
+        var score = 0;
+        queryWords.forEach(function(word) {
+            if (word.length > 2 && question.indexOf(word) !== -1) {
+                score++;
+            }
+        });
+        return score;
     }
 
     toggleChat() {
@@ -420,6 +546,7 @@ class ChatbotWidget {
         this.window.classList.toggle('open', this.isOpen);
         this.toggle.classList.toggle('open', this.isOpen);
         if (this.isOpen) {
+            this.bubble.classList.add('hidden');
             this.toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
         } else {
             this.toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>';
@@ -516,6 +643,8 @@ class ChatbotWidget {
 
     refresh() {
         this.updateHeader();
+        this.updateBubbleText();
+        this.updateInputPlaceholder();
         this.messagesEl.innerHTML = '';
         this.addMessage(this.t('chat.greeting'), 'bot');
         this.showCategories();
