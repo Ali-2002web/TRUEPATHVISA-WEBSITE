@@ -211,7 +211,7 @@
             var situation = document.querySelector('.book-form-textarea').value.trim();
 
             var selectedDate = document.querySelector('.book-calendar-grid .selected');
-            var selectedSlot = document.querySelector('.book-slot.active');
+            var selectedSlot = document.querySelector('.book-slot.selected');
 
             if (!name || !email || !phone) {
                 showFormMessage('error', getCurrentLang() === 'fr' ? 'Veuillez remplir tous les champs obligatoires.' : 'Please fill in all required fields.');
