@@ -116,6 +116,8 @@ class HeroSlider {
         this.circleImages = document.querySelectorAll('.circle-image-container');
         this.indicators = document.querySelectorAll('.indicator');
 
+        if (this.backgrounds.length === 0) return;
+
         this.init();
     }
 
