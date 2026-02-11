@@ -214,12 +214,12 @@
             var selectedSlot = document.querySelector('.book-slot.active');
 
             if (!name || !email || !phone) {
-                showFormMessage('error', currentLang === 'fr' ? 'Veuillez remplir tous les champs obligatoires.' : 'Please fill in all required fields.');
+                showFormMessage('error', getCurrentLang() === 'fr' ? 'Veuillez remplir tous les champs obligatoires.' : 'Please fill in all required fields.');
                 return;
             }
 
             if (!selectedDate || !selectedSlot) {
-                showFormMessage('error', currentLang === 'fr' ? 'Veuillez sélectionner une date et un créneau horaire.' : 'Please select a date and time slot.');
+                showFormMessage('error', getCurrentLang() === 'fr' ? 'Veuillez sélectionner une date et un créneau horaire.' : 'Please select a date and time slot.');
                 return;
             }
 
@@ -227,7 +227,7 @@
             var timeText = selectedSlot.textContent;
 
             submitBtn.disabled = true;
-            submitBtnText.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+            submitBtnText.textContent = getCurrentLang() === 'fr' ? 'Envoi en cours...' : 'Sending...';
 
             emailjs.send('service_7w5jowu', 'template_3kwasqo', {
                 from_name: name,
@@ -238,13 +238,13 @@
                 date: dateText,
                 time: timeText
             }).then(function () {
-                showFormMessage('success', currentLang === 'fr' ? 'Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.' : 'Your request has been sent successfully! We will contact you soon.');
-                submitBtnText.textContent = currentLang === 'fr' ? 'Demande envoyée !' : 'Request sent!';
+                showFormMessage('success', getCurrentLang() === 'fr' ? 'Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.' : 'Your request has been sent successfully! We will contact you soon.');
+                submitBtnText.textContent = getCurrentLang() === 'fr' ? 'Demande envoyée !' : 'Request sent!';
                 submitBtn.classList.add('sent');
             }, function (error) {
-                showFormMessage('error', currentLang === 'fr' ? 'Une erreur est survenue. Veuillez réessayer.' : 'An error occurred. Please try again.');
+                showFormMessage('error', getCurrentLang() === 'fr' ? 'Une erreur est survenue. Veuillez réessayer.' : 'An error occurred. Please try again.');
                 submitBtn.disabled = false;
-                submitBtnText.textContent = currentLang === 'fr' ? 'Demander une consultation' : 'Request a consultation';
+                submitBtnText.textContent = getCurrentLang() === 'fr' ? 'Demander une consultation' : 'Request a consultation';
             });
         });
 
