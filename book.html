@@ -223,7 +223,8 @@
                 return;
             }
 
-            var dateText = selectedDate.getAttribute('data-date') || selectedDate.textContent;
+            var calDate = window.bookingCalendar.selectedDate;
+            var dateText = calDate.getDate() + '/' + (calDate.getMonth() + 1) + '/' + calDate.getFullYear();
             var timeText = selectedSlot.textContent;
 
             submitBtn.disabled = true;
