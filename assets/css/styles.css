@@ -2082,6 +2082,33 @@ img {
         height: 150px;
         margin-top: -30px;
     }
+
+    /* Requirements Page Cards */
+    .req-card {
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .req-card-left,
+    .req-card-right {
+        align-self: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .req-card-title {
+        font-size: 1rem;
+    }
+
+    .req-card-desc {
+        font-size: 0.85rem;
+    }
+
+    .req-card-icon {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -2228,32 +2255,7 @@ img {
         padding: 40px 20px;
     }
 
-    .req-card {
-        max-width: 100%;
-        padding: 20px;
-        border-radius: 12px;
-    }
 
-    .req-card-title {
-        font-size: 1rem;
-    }
-
-    .req-card-desc {
-        font-size: 0.85rem;
-    }
-
-    .req-card-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .req-card-left,
-    .req-card-right {
-        margin-left: 0;
-        margin-right: 0;
-        align-self: stretch;
-        max-width: 100%;
-    }
 
     .photo-guide-card {
         grid-template-columns: 1fr;
