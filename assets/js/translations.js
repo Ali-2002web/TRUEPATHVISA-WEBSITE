@@ -233,12 +233,40 @@ const translations = {
         "quiz.q1.retired": "Retired",
         "quiz.q1.unemployed": "Unemployed",
 
-        // Q2: Income (shared)
-        "quiz.q2": "What is your monthly income range?",
-        "quiz.q2.a1": "Over 20,000 MAD",
-        "quiz.q2.a2": "10,000 – 20,000 MAD",
-        "quiz.q2.a3": "5,000 – 10,000 MAD",
-        "quiz.q2.a4": "Under 5,000 MAD",
+        // Q2 branched — Employed
+        "quiz.q2_emp": "What is your monthly salary range?",
+        "quiz.q2_emp.a1": "Over 20,000 MAD",
+        "quiz.q2_emp.a2": "10,000 – 20,000 MAD",
+        "quiz.q2_emp.a3": "5,000 – 10,000 MAD",
+        "quiz.q2_emp.a4": "Under 5,000 MAD",
+
+        // Q2 branched — Self-employed
+        "quiz.q2_self": "What is your average monthly business income?",
+        "quiz.q2_self.a1": "Over 20,000 MAD",
+        "quiz.q2_self.a2": "10,000 – 20,000 MAD",
+        "quiz.q2_self.a3": "5,000 – 10,000 MAD",
+        "quiz.q2_self.a4": "Under 5,000 MAD",
+
+        // Q2 branched — Student
+        "quiz.q2_stu": "How are your studies and travel financed?",
+        "quiz.q2_stu.a1": "Parents with stable income",
+        "quiz.q2_stu.a2": "Scholarship or grant",
+        "quiz.q2_stu.a3": "Part-time work / self-financed",
+        "quiz.q2_stu.a4": "Limited family support",
+
+        // Q2 branched — Retired
+        "quiz.q2_ret": "What is your monthly pension or income?",
+        "quiz.q2_ret.a1": "Over 15,000 MAD",
+        "quiz.q2_ret.a2": "8,000 – 15,000 MAD",
+        "quiz.q2_ret.a3": "4,000 – 8,000 MAD",
+        "quiz.q2_ret.a4": "Under 4,000 MAD",
+
+        // Q2 branched — Unemployed
+        "quiz.q2_unemp": "What financial resources do you have for travel?",
+        "quiz.q2_unemp.a1": "Savings over 100,000 MAD",
+        "quiz.q2_unemp.a2": "Savings 50,000 – 100,000 MAD",
+        "quiz.q2_unemp.a3": "Savings 20,000 – 50,000 MAD",
+        "quiz.q2_unemp.a4": "Limited savings (under 20,000 MAD)",
 
         // Q3 branched — Employed
         "quiz.q3_emp": "How long have you been at your current job?",
@@ -540,12 +568,40 @@ const translations = {
         "quiz.q1.retired": "Retrait\u00e9(e)",
         "quiz.q1.unemployed": "Sans emploi",
 
-        // Q2: Revenu (partag\u00e9)
-        "quiz.q2": "Quelle est votre tranche de revenu mensuel ?",
-        "quiz.q2.a1": "Plus de 20 000 MAD",
-        "quiz.q2.a2": "10 000 \u2013 20 000 MAD",
-        "quiz.q2.a3": "5 000 \u2013 10 000 MAD",
-        "quiz.q2.a4": "Moins de 5 000 MAD",
+        // Q2 branch\u00e9e \u2014 Salari\u00e9
+        "quiz.q2_emp": "Quelle est votre tranche de salaire mensuel ?",
+        "quiz.q2_emp.a1": "Plus de 20 000 MAD",
+        "quiz.q2_emp.a2": "10 000 \u2013 20 000 MAD",
+        "quiz.q2_emp.a3": "5 000 \u2013 10 000 MAD",
+        "quiz.q2_emp.a4": "Moins de 5 000 MAD",
+
+        // Q2 branch\u00e9e \u2014 Ind\u00e9pendant
+        "quiz.q2_self": "Quel est votre revenu moyen mensuel d'activit\u00e9 ?",
+        "quiz.q2_self.a1": "Plus de 20 000 MAD",
+        "quiz.q2_self.a2": "10 000 \u2013 20 000 MAD",
+        "quiz.q2_self.a3": "5 000 \u2013 10 000 MAD",
+        "quiz.q2_self.a4": "Moins de 5 000 MAD",
+
+        // Q2 branch\u00e9e \u2014 \u00c9tudiant
+        "quiz.q2_stu": "Comment vos \u00e9tudes et votre voyage sont-ils financ\u00e9s ?",
+        "quiz.q2_stu.a1": "Parents avec revenus stables",
+        "quiz.q2_stu.a2": "Bourse ou subvention",
+        "quiz.q2_stu.a3": "Travail \u00e0 temps partiel / autofinancement",
+        "quiz.q2_stu.a4": "Soutien familial limit\u00e9",
+
+        // Q2 branch\u00e9e \u2014 Retrait\u00e9
+        "quiz.q2_ret": "Quel est votre revenu mensuel de retraite ?",
+        "quiz.q2_ret.a1": "Plus de 15 000 MAD",
+        "quiz.q2_ret.a2": "8 000 \u2013 15 000 MAD",
+        "quiz.q2_ret.a3": "4 000 \u2013 8 000 MAD",
+        "quiz.q2_ret.a4": "Moins de 4 000 MAD",
+
+        // Q2 branch\u00e9e \u2014 Sans emploi
+        "quiz.q2_unemp": "Quelles ressources financi\u00e8res avez-vous pour voyager ?",
+        "quiz.q2_unemp.a1": "\u00c9pargne de plus de 100 000 MAD",
+        "quiz.q2_unemp.a2": "\u00c9pargne de 50 000 \u2013 100 000 MAD",
+        "quiz.q2_unemp.a3": "\u00c9pargne de 20 000 \u2013 50 000 MAD",
+        "quiz.q2_unemp.a4": "\u00c9pargne limit\u00e9e (moins de 20 000 MAD)",
 
         // Q3 branch\u00e9e \u2014 Salari\u00e9
         "quiz.q3_emp": "Depuis combien de temps occupez-vous votre poste actuel ?",

@@ -675,61 +675,32 @@ class EligibilityQuiz {
     // Build the branching question flow based on Q1 answer
     buildPath(statusKey) {
         this.status = statusKey;
-        // Q1: Professional status (always first)
-        // Then branch into status-specific "strong ties" questions
-        // Then shared questions: travel history, purpose
-
+        var sfxMap = { employed: 'emp', selfemployed: 'self', student: 'stu', retired: 'ret', unemployed: 'unemp' };
+        var sfx = sfxMap[statusKey];
         var path = [];
 
-        // Q2: Income (shared but label adapts)
-        path.push({ key: 'q2', answers: [
+        // Q2: Financial situation (branched per status)
+        path.push({ key: 'q2_' + sfx, answers: [
             { key: 'a1', score: 3 },
             { key: 'a2', score: 2 },
             { key: 'a3', score: 1 },
             { key: 'a4', score: 0 }
         ]});
 
-        // Branched Q3 based on status
-        if (statusKey === 'employed') {
-            path.push({ key: 'q3_emp', answers: [
-                { key: 'a1', score: 3 },
-                { key: 'a2', score: 2 },
-                { key: 'a3', score: 1 }
-            ]});
-        } else if (statusKey === 'selfemployed') {
-            path.push({ key: 'q3_self', answers: [
-                { key: 'a1', score: 3 },
-                { key: 'a2', score: 2 },
-                { key: 'a3', score: 1 }
-            ]});
-        } else if (statusKey === 'student') {
-            path.push({ key: 'q3_stu', answers: [
-                { key: 'a1', score: 3 },
-                { key: 'a2', score: 2 },
-                { key: 'a3', score: 1 }
-            ]});
-        } else if (statusKey === 'retired') {
-            path.push({ key: 'q3_ret', answers: [
-                { key: 'a1', score: 3 },
-                { key: 'a2', score: 2 },
-                { key: 'a3', score: 1 }
-            ]});
-        } else {
-            path.push({ key: 'q3_unemp', answers: [
-                { key: 'a1', score: 2 },
-                { key: 'a2', score: 1 },
-                { key: 'a3', score: 0 }
-            ]});
-        }
+        // Q3: Strong ties (branched per status)
+        var q3Scores = statusKey === 'unemployed'
+            ? [{ key: 'a1', score: 2 }, { key: 'a2', score: 1 }, { key: 'a3', score: 0 }]
+            : [{ key: 'a1', score: 3 }, { key: 'a2', score: 2 }, { key: 'a3', score: 1 }];
+        path.push({ key: 'q3_' + sfx, answers: q3Scores });
 
-        // Q4: Property / Assets
+        // Q4: Property / Assets (shared)
         path.push({ key: 'q4', answers: [
             { key: 'a1', score: 3 },
             { key: 'a2', score: 1 },
             { key: 'a3', score: 1 }
         ]});
 
-        // Q5: Family situation
+        // Q5: Family situation (shared)
         path.push({ key: 'q5', answers: [
             { key: 'a1', score: 3 },
             { key: 'a2', score: 2 },
@@ -737,14 +708,14 @@ class EligibilityQuiz {
             { key: 'a4', score: 0 }
         ]});
 
-        // Q6: Travel history
+        // Q6: Travel history (shared)
         path.push({ key: 'q6', answers: [
             { key: 'a1', score: 3 },
             { key: 'a2', score: 2 },
             { key: 'a3', score: 0 }
         ]});
 
-        // Q7: Purpose of travel
+        // Q7: Purpose of travel (shared)
         path.push({ key: 'q7', answers: [
             { key: 'a1', score: 2 },
             { key: 'a2', score: 3 },
