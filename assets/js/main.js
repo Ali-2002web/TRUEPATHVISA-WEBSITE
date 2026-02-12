@@ -970,7 +970,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }));
             });
 
-            // Sidebar: sync circles to cards using actual card pin positions
+            // Sidebar: sync circles to cards using visual card positions
             const processSteps = document.querySelectorAll('.process-step');
             if (processSteps.length > 0) {
                 const stepsEl = document.querySelector('.process-steps');
@@ -985,32 +985,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 const halfH = stepsEl.offsetHeight / 2;
                 gsap.set(stepsEl, { y: halfH - circleOffsets[0] });
 
-                // Use card pin start positions for exact circle-card mapping
+                // Read actual card positions on screen (not GSAP internal values)
                 ScrollTrigger.create({
                     trigger: '.steps-cards',
                     start: 'top bottom',
                     end: 'bottom top',
-                    onUpdate: function(self) {
-                        var scrollPos = self.scroll();
-                        var n = processSteps.length;
+                    onUpdate: function() {
+                        var n = Math.min(processSteps.length, cards.length);
                         var activeIdx = 0;
 
-                        // Which card is currently pinned (on top)?
-                        for (var i = 0; i < n && i < cardSTs.length; i++) {
-                            if (scrollPos >= cardSTs[i].start) {
+                        // A pinned card has rect.top near 0; scaled-down cards ≈ 30px
+                        for (var i = 0; i < n; i++) {
+                            if (cards[i].getBoundingClientRect().top <= 50) {
                                 activeIdx = i;
                             }
                         }
 
-                        // Smooth interpolation to next circle
+                        // Smooth interpolation: how close is the next card to pinning?
                         var nextIdx = Math.min(activeIdx + 1, n - 1);
                         var frac = 0;
-                        if (activeIdx < n - 1 && activeIdx < cardSTs.length - 1) {
-                            var rangeStart = cardSTs[activeIdx].start;
-                            var rangeEnd = cardSTs[activeIdx + 1].start;
-                            if (rangeEnd > rangeStart) {
-                                frac = (scrollPos - rangeStart) / (rangeEnd - rangeStart);
-                                frac = Math.max(0, Math.min(1, frac));
+                        if (activeIdx < n - 1) {
+                            var nextTop = cards[activeIdx + 1].getBoundingClientRect().top;
+                            var cardH = cards[0].offsetHeight;
+                            if (cardH > 0) {
+                                frac = 1 - Math.max(0, Math.min(1, nextTop / cardH));
                             }
                         }
 
