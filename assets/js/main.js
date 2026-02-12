@@ -977,9 +977,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardSTs.push(st);
             });
 
-            // Single scroll listener syncs circles using pin start positions
+            // Sync circles to cards using each card's pin start scroll position
             if (processSteps.length > 0) {
-                var earlyOffset = window.innerHeight * 0.4;
                 ScrollTrigger.create({
                     trigger: '.steps-cards',
                     start: 'top bottom',
@@ -988,7 +987,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         var scrollPos = window.pageYOffset || document.documentElement.scrollTop;
                         var activeIdx = 0;
                         for (var i = 0; i < cardSTs.length; i++) {
-                            if (scrollPos >= cardSTs[i].start - earlyOffset) {
+                            if (scrollPos >= cardSTs[i].start) {
                                 activeIdx = i;
                             }
                         }
