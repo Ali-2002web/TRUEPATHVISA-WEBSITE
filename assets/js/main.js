@@ -982,37 +982,30 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             processSteps[0].classList.add('active');
-            // Set initial alignment for circle 0
-            var initHalf = stepsEl.offsetHeight / 2;
-            gsap.set(stepsEl, { y: initHalf - circleOffsets[0] });
 
-            function alignCircle(index) {
-                // Sidebar is 100vh with flex align-items:center
-                // Shift process-steps so active circle sits at the flex center
-                var halfSteps = stepsEl.offsetHeight / 2;
-                gsap.to(stepsEl, {
-                    y: halfSteps - circleOffsets[index],
-                    duration: 0.5,
-                    ease: 'power2.out'
-                });
+            // Build a scrubbed timeline so sidebar moves continuously with cards
+            const halfH = stepsEl.offsetHeight / 2;
+            gsap.set(stepsEl, { y: halfH - circleOffsets[0] });
+
+            const tl = gsap.timeline();
+            for (var i = 1; i < circleOffsets.length; i++) {
+                tl.to(stepsEl, { y: halfH - circleOffsets[i], ease: 'none' });
             }
 
-            cards.forEach((card, index) => {
-                if (processSteps[index]) {
-                    ScrollTrigger.create({
-                        trigger: card,
-                        start: 'top 60%',
-                        end: 'bottom 40%',
-                        onEnter: () => {
-                            processSteps.forEach(s => s.classList.remove('active'));
-                            processSteps[index].classList.add('active');
-                            alignCircle(index);
-                        },
-                        onEnterBack: () => {
-                            processSteps.forEach(s => s.classList.remove('active'));
-                            processSteps[index].classList.add('active');
-                            alignCircle(index);
-                        }
+            ScrollTrigger.create({
+                trigger: cards[0],
+                start: 'top top',
+                endTrigger: cards[cards.length - 1],
+                end: 'center center',
+                scrub: 0.5,
+                animation: tl,
+                onUpdate: function(self) {
+                    var idx = Math.min(
+                        Math.floor(self.progress * processSteps.length),
+                        processSteps.length - 1
+                    );
+                    processSteps.forEach(function(s, i) {
+                        s.classList.toggle('active', i === idx);
                     });
                 }
             });
