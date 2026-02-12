@@ -935,6 +935,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.chatbot = new ChatbotWidget();
     window.eligibilityQuiz = new EligibilityQuiz();
 
+    // Switch chatbot toggle color when over footer
+    var chatToggle = document.querySelector('.chatbot-toggle');
+    var footer = document.querySelector('.footer');
+    if (chatToggle && footer) {
+        window.addEventListener('scroll', function() {
+            var footerTop = footer.getBoundingClientRect().top;
+            var toggleBottom = chatToggle.getBoundingClientRect().bottom;
+            chatToggle.classList.toggle('on-footer', toggleBottom >= footerTop);
+        });
+    }
+
     // Initialize GSAP ScrollTrigger for card stacking animation
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);

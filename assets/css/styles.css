@@ -2431,6 +2431,16 @@ img {
     box-shadow: 0 6px 20px rgba(26, 143, 227, 0.5);
 }
 
+.chatbot-toggle.on-footer {
+    background: var(--white);
+    color: var(--primary-blue);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.chatbot-toggle.on-footer:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
 .chatbot-bubble {
     position: fixed;
     bottom: 88px;
