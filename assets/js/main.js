@@ -973,7 +973,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const processSteps = document.querySelectorAll('.process-step');
         if (cards.length > 0 && processSteps.length > 0) {
             const stepsEl = document.querySelector('.process-steps');
-            const sidebarPadding = 80;
 
             // Pre-compute each circle's center Y relative to .process-steps
             const circleOffsets = [];
@@ -983,13 +982,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             processSteps[0].classList.add('active');
+            // Set initial alignment for circle 0
+            var initHalf = stepsEl.offsetHeight / 2;
+            gsap.set(stepsEl, { y: initHalf - circleOffsets[0] });
 
             function alignCircle(index) {
-                // Card is pinned at top, 60vh tall, center at 30vh
-                var targetY = window.innerHeight * 0.3;
-                var circleY = sidebarPadding + circleOffsets[index];
+                // Sidebar is 100vh with flex align-items:center
+                // Shift process-steps so active circle sits at the flex center
+                var halfSteps = stepsEl.offsetHeight / 2;
                 gsap.to(stepsEl, {
-                    y: targetY - circleY,
+                    y: halfSteps - circleOffsets[index],
                     duration: 0.5,
                     ease: 'power2.out'
                 });
