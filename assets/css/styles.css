@@ -2085,16 +2085,15 @@ img {
 
     /* Requirements Page Cards */
     .req-card {
-        max-width: 100%;
+        max-width: none;
+        width: 100%;
         padding: 20px;
         border-radius: 12px;
     }
 
     .req-card-left,
     .req-card-right {
-        align-self: center;
-        margin-left: 0;
-        margin-right: 0;
+        align-self: stretch;
     }
 
     .req-card-title {
