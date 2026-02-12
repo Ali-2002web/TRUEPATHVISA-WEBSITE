@@ -21,6 +21,10 @@ function setLang(lang) {
     if (window.chatbot) {
         window.chatbot.refresh();
     }
+    // Refresh eligibility quiz language
+    if (window.eligibilityQuiz) {
+        window.eligibilityQuiz.refresh();
+    }
 }
 
 function applyTranslations(lang) {
@@ -651,6 +655,306 @@ class ChatbotWidget {
     }
 }
 
+// Eligibility Quiz Widget — Branching Logic
+class EligibilityQuiz {
+    constructor() {
+        this.isOpen = false;
+        this.score = 0;
+        this.totalSteps = 0;
+        this.stepIndex = 0;
+        this.path = [];
+        this.status = '';
+        this.createDOM();
+        this.bindEvents();
+    }
+
+    t(key) {
+        return translations[getCurrentLang()][key] || key;
+    }
+
+    // Build the branching question flow based on Q1 answer
+    buildPath(statusKey) {
+        this.status = statusKey;
+        // Q1: Professional status (always first)
+        // Then branch into status-specific "strong ties" questions
+        // Then shared questions: travel history, purpose
+
+        var path = [];
+
+        // Q2: Income (shared but label adapts)
+        path.push({ key: 'q2', answers: [
+            { key: 'a1', score: 3 },
+            { key: 'a2', score: 2 },
+            { key: 'a3', score: 1 },
+            { key: 'a4', score: 0 }
+        ]});
+
+        // Branched Q3 based on status
+        if (statusKey === 'employed') {
+            path.push({ key: 'q3_emp', answers: [
+                { key: 'a1', score: 3 },
+                { key: 'a2', score: 2 },
+                { key: 'a3', score: 1 }
+            ]});
+        } else if (statusKey === 'selfemployed') {
+            path.push({ key: 'q3_self', answers: [
+                { key: 'a1', score: 3 },
+                { key: 'a2', score: 2 },
+                { key: 'a3', score: 1 }
+            ]});
+        } else if (statusKey === 'student') {
+            path.push({ key: 'q3_stu', answers: [
+                { key: 'a1', score: 3 },
+                { key: 'a2', score: 2 },
+                { key: 'a3', score: 1 }
+            ]});
+        } else if (statusKey === 'retired') {
+            path.push({ key: 'q3_ret', answers: [
+                { key: 'a1', score: 3 },
+                { key: 'a2', score: 2 },
+                { key: 'a3', score: 1 }
+            ]});
+        } else {
+            path.push({ key: 'q3_unemp', answers: [
+                { key: 'a1', score: 2 },
+                { key: 'a2', score: 1 },
+                { key: 'a3', score: 0 }
+            ]});
+        }
+
+        // Q4: Property / Assets
+        path.push({ key: 'q4', answers: [
+            { key: 'a1', score: 3 },
+            { key: 'a2', score: 1 },
+            { key: 'a3', score: 1 }
+        ]});
+
+        // Q5: Family situation
+        path.push({ key: 'q5', answers: [
+            { key: 'a1', score: 3 },
+            { key: 'a2', score: 2 },
+            { key: 'a3', score: 1 },
+            { key: 'a4', score: 0 }
+        ]});
+
+        // Q6: Travel history
+        path.push({ key: 'q6', answers: [
+            { key: 'a1', score: 3 },
+            { key: 'a2', score: 2 },
+            { key: 'a3', score: 0 }
+        ]});
+
+        // Q7: Purpose of travel
+        path.push({ key: 'q7', answers: [
+            { key: 'a1', score: 2 },
+            { key: 'a2', score: 3 },
+            { key: 'a3', score: 2 },
+            { key: 'a4', score: 1 }
+        ]});
+
+        this.path = path;
+        this.totalSteps = path.length + 1; // +1 for Q1
+    }
+
+    createDOM() {
+        this.overlay = document.createElement('div');
+        this.overlay.className = 'quiz-overlay';
+
+        this.panel = document.createElement('div');
+        this.panel.className = 'quiz-panel';
+        this.panel.innerHTML =
+            '<div class="quiz-header">' +
+                '<div>' +
+                    '<h3 class="quiz-header-title"></h3>' +
+                    '<p class="quiz-header-sub"></p>' +
+                '</div>' +
+                '<button class="quiz-close">&times;</button>' +
+            '</div>' +
+            '<div class="quiz-body">' +
+                '<div class="quiz-progress"><div class="quiz-progress-bar"></div></div>' +
+                '<div class="quiz-step-label"></div>' +
+                '<div class="quiz-content"></div>' +
+            '</div>';
+
+        document.body.appendChild(this.overlay);
+        document.body.appendChild(this.panel);
+
+        this.headerTitle = this.panel.querySelector('.quiz-header-title');
+        this.headerSub = this.panel.querySelector('.quiz-header-sub');
+        this.progressBar = this.panel.querySelector('.quiz-progress-bar');
+        this.stepLabel = this.panel.querySelector('.quiz-step-label');
+        this.content = this.panel.querySelector('.quiz-content');
+        this.closeBtn = this.panel.querySelector('.quiz-close');
+
+        this.updateTexts();
+    }
+
+    updateTexts() {
+        this.headerTitle.textContent = this.t('quiz.title');
+        this.headerSub.textContent = this.t('quiz.subtitle');
+    }
+
+    bindEvents() {
+        this.closeBtn.addEventListener('click', () => this.close());
+        this.overlay.addEventListener('click', () => this.close());
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.quiz-trigger')) {
+                e.preventDefault();
+                this.open();
+            }
+        });
+    }
+
+    open() {
+        this.isOpen = true;
+        this.score = 0;
+        this.stepIndex = 0;
+        this.path = [];
+        this.status = '';
+        this.totalSteps = 7;
+        this.updateTexts();
+        this.panel.classList.add('open');
+        this.overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        this.showQ1();
+    }
+
+    close() {
+        this.isOpen = false;
+        this.panel.classList.remove('open');
+        this.overlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    showQ1() {
+        this.stepIndex = 0;
+        var progress = (0 / this.totalSteps) * 100;
+        this.progressBar.style.width = progress + '%';
+        this.stepLabel.textContent = this.t('quiz.step') + ' 1 / ' + this.totalSteps;
+
+        var statuses = [
+            { key: 'employed', score: 3 },
+            { key: 'selfemployed', score: 3 },
+            { key: 'student', score: 1 },
+            { key: 'retired', score: 2 },
+            { key: 'unemployed', score: 0 }
+        ];
+
+        var html = '<h4 class="quiz-question">' + this.t('quiz.q1') + '</h4>';
+        html += '<div class="quiz-options">';
+        statuses.forEach(function(s) {
+            html += '<button class="quiz-option" data-status="' + s.key + '" data-score="' + s.score + '">' +
+                        '<span class="quiz-option-text">' + this.t('quiz.q1.' + s.key) + '</span>' +
+                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
+                    '</button>';
+        }.bind(this));
+        html += '</div>';
+
+        this.content.innerHTML = html;
+
+        this.content.querySelectorAll('.quiz-option').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                this.score += parseInt(btn.dataset.score);
+                btn.classList.add('selected');
+                this.buildPath(btn.dataset.status);
+                setTimeout(function() {
+                    this.stepIndex = 1;
+                    this.showBranchedQuestion();
+                }.bind(this), 300);
+            }.bind(this));
+        }.bind(this));
+    }
+
+    showBranchedQuestion() {
+        var pathIdx = this.stepIndex - 1;
+        if (pathIdx >= this.path.length) {
+            this.showResult();
+            return;
+        }
+
+        var q = this.path[pathIdx];
+        var progress = (this.stepIndex / this.totalSteps) * 100;
+        this.progressBar.style.width = progress + '%';
+        this.stepLabel.textContent = this.t('quiz.step') + ' ' + (this.stepIndex + 1) + ' / ' + this.totalSteps;
+
+        var html = '<h4 class="quiz-question">' + this.t('quiz.' + q.key) + '</h4>';
+        html += '<div class="quiz-options">';
+        q.answers.forEach(function(a) {
+            html += '<button class="quiz-option" data-score="' + a.score + '">' +
+                        '<span class="quiz-option-text">' + this.t('quiz.' + q.key + '.' + a.key) + '</span>' +
+                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
+                    '</button>';
+        }.bind(this));
+        html += '</div>';
+
+        this.content.innerHTML = html;
+
+        this.content.querySelectorAll('.quiz-option').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                this.score += parseInt(btn.dataset.score);
+                btn.classList.add('selected');
+                setTimeout(function() {
+                    this.stepIndex++;
+                    this.showBranchedQuestion();
+                }.bind(this), 300);
+            }.bind(this));
+        }.bind(this));
+    }
+
+    showResult() {
+        this.progressBar.style.width = '100%';
+        this.stepLabel.textContent = '';
+
+        var level, levelClass;
+        var maxScore = 21;
+
+        if (this.score >= 16) {
+            level = 'high';
+            levelClass = 'quiz-result-high';
+        } else if (this.score >= 10) {
+            level = 'mid';
+            levelClass = 'quiz-result-mid';
+        } else {
+            level = 'low';
+            levelClass = 'quiz-result-low';
+        }
+
+        var percentage = Math.min(Math.round((this.score / maxScore) * 100), 100);
+
+        var html = '<div class="quiz-result">' +
+            '<div class="quiz-score-circle ' + levelClass + '">' +
+                '<span class="quiz-score-number">' + percentage + '%</span>' +
+            '</div>' +
+            '<h4 class="quiz-result-title ' + levelClass + '-text">' + this.t('quiz.result.' + level) + '</h4>' +
+            '<p class="quiz-result-desc">' + this.t('quiz.result.' + level + '.desc') + '</p>' +
+            '<div class="quiz-result-actions">' +
+                '<a href="book.html" class="quiz-result-btn">' + this.t('quiz.result.cta') + '</a>' +
+                '<button class="quiz-retry-btn">' + this.t('quiz.result.retry') + '</button>' +
+            '</div>' +
+        '</div>';
+
+        this.content.innerHTML = html;
+
+        this.content.querySelector('.quiz-retry-btn').addEventListener('click', function() {
+            this.open();
+        }.bind(this));
+    }
+
+    refresh() {
+        this.updateTexts();
+        if (this.isOpen) {
+            // Re-render current state
+            if (this.stepIndex === 0) {
+                this.showQ1();
+            } else if (this.stepIndex - 1 < this.path.length) {
+                this.showBranchedQuestion();
+            } else {
+                this.showResult();
+            }
+        }
+    }
+}
+
 // Initialize slider when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new HeroSlider();
@@ -658,6 +962,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFAQ();
     initLangToggle();
     window.chatbot = new ChatbotWidget();
+    window.eligibilityQuiz = new EligibilityQuiz();
 
     // Initialize GSAP ScrollTrigger for card stacking animation
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {

@@ -216,7 +216,95 @@ const translations = {
         "chat.cat.payment": "Payment & Fees",
         "chat.cat.interview": "Interview",
         "chat.back": "Back to topics",
-        "chat.book": "Book a consultation"
+        "chat.book": "Book a consultation",
+
+        // Eligibility Quiz
+        "quiz.btn": "Check Eligibility",
+        "quiz.title": "Eligibility Check",
+        "quiz.subtitle": "Answer 7 quick questions to evaluate your visa profile.",
+        "quiz.start": "Start Quiz",
+        "quiz.next": "Next",
+
+        // Q1: Professional status
+        "quiz.q1": "What is your professional status?",
+        "quiz.q1.employed": "Employed (CDI / Public sector)",
+        "quiz.q1.selfemployed": "Self-employed / Business owner",
+        "quiz.q1.student": "Student",
+        "quiz.q1.retired": "Retired",
+        "quiz.q1.unemployed": "Unemployed",
+
+        // Q2: Income (shared)
+        "quiz.q2": "What is your monthly income range?",
+        "quiz.q2.a1": "Over 20,000 MAD",
+        "quiz.q2.a2": "10,000 – 20,000 MAD",
+        "quiz.q2.a3": "5,000 – 10,000 MAD",
+        "quiz.q2.a4": "Under 5,000 MAD",
+
+        // Q3 branched — Employed
+        "quiz.q3_emp": "How long have you been at your current job?",
+        "quiz.q3_emp.a1": "5+ years (stable position)",
+        "quiz.q3_emp.a2": "1–5 years",
+        "quiz.q3_emp.a3": "Less than 1 year",
+
+        // Q3 branched — Self-employed
+        "quiz.q3_self": "How established is your business?",
+        "quiz.q3_self.a1": "3+ years, registered & profitable",
+        "quiz.q3_self.a2": "1–3 years, registered",
+        "quiz.q3_self.a3": "Less than 1 year / informal",
+
+        // Q3 branched — Student
+        "quiz.q3_stu": "What is your current enrollment status?",
+        "quiz.q3_stu.a1": "Enrolled with graduation planned",
+        "quiz.q3_stu.a2": "Currently enrolled",
+        "quiz.q3_stu.a3": "Recently graduated / gap year",
+
+        // Q3 branched — Retired
+        "quiz.q3_ret": "What is your financial situation in retirement?",
+        "quiz.q3_ret.a1": "Regular pension + property/assets",
+        "quiz.q3_ret.a2": "Regular pension",
+        "quiz.q3_ret.a3": "Savings only",
+
+        // Q3 branched — Unemployed
+        "quiz.q3_unemp": "What is your recent work history?",
+        "quiz.q3_unemp.a1": "Recently employed, strong savings",
+        "quiz.q3_unemp.a2": "Some work history in the past",
+        "quiz.q3_unemp.a3": "No recent employment",
+
+        // Q4: Property (shared)
+        "quiz.q4": "What is your housing situation in Morocco?",
+        "quiz.q4.a1": "I own property",
+        "quiz.q4.a2": "I rent",
+        "quiz.q4.a3": "I live with family",
+
+        // Q5: Family (shared)
+        "quiz.q5": "What is your family situation?",
+        "quiz.q5.a1": "Married with children",
+        "quiz.q5.a2": "Married",
+        "quiz.q5.a3": "Single with strong family ties",
+        "quiz.q5.a4": "Single, no dependents",
+
+        // Q6: Travel history (shared)
+        "quiz.q6": "Have you traveled internationally before?",
+        "quiz.q6.a1": "Yes, to Schengen/US/UK/Canada",
+        "quiz.q6.a2": "Yes, to other countries",
+        "quiz.q6.a3": "No, first time",
+
+        // Q7: Purpose (shared)
+        "quiz.q7": "What is the purpose of your trip?",
+        "quiz.q7.a1": "Tourism / Vacation",
+        "quiz.q7.a2": "Business / Conference",
+        "quiz.q7.a3": "Family visit",
+        "quiz.q7.a4": "Medical treatment",
+
+        "quiz.result.high": "Strong Profile",
+        "quiz.result.high.desc": "Your profile shows strong ties and qualifications. You have a good chance of visa approval. We recommend booking a consultation to finalize your preparation.",
+        "quiz.result.mid": "Moderate Profile",
+        "quiz.result.mid.desc": "Your profile has potential but some areas could be strengthened. A professional consultation can help maximize your chances.",
+        "quiz.result.low": "Needs Preparation",
+        "quiz.result.low.desc": "Your profile needs additional preparation before applying. We strongly recommend a consultation to discuss strategies to strengthen your application.",
+        "quiz.result.cta": "Book a Consultation",
+        "quiz.result.retry": "Retake Quiz",
+        "quiz.step": "Question"
     },
     fr: {
         // Nav
@@ -435,6 +523,94 @@ const translations = {
         "chat.cat.payment": "Paiement & Frais",
         "chat.cat.interview": "Entretien",
         "chat.back": "Retour aux sujets",
-        "chat.book": "R\u00e9server une consultation"
+        "chat.book": "R\u00e9server une consultation",
+
+        // Eligibility Quiz
+        "quiz.btn": "V\u00e9rifier mon \u00e9ligibilit\u00e9",
+        "quiz.title": "Test d'\u00e9ligibilit\u00e9",
+        "quiz.subtitle": "R\u00e9pondez \u00e0 7 questions rapides pour \u00e9valuer votre profil visa.",
+        "quiz.start": "Commencer le test",
+        "quiz.next": "Suivant",
+
+        // Q1: Statut professionnel
+        "quiz.q1": "Quel est votre statut professionnel ?",
+        "quiz.q1.employed": "Salari\u00e9(e) (CDI / Fonction publique)",
+        "quiz.q1.selfemployed": "Ind\u00e9pendant(e) / Chef d'entreprise",
+        "quiz.q1.student": "\u00c9tudiant(e)",
+        "quiz.q1.retired": "Retrait\u00e9(e)",
+        "quiz.q1.unemployed": "Sans emploi",
+
+        // Q2: Revenu (partag\u00e9)
+        "quiz.q2": "Quelle est votre tranche de revenu mensuel ?",
+        "quiz.q2.a1": "Plus de 20 000 MAD",
+        "quiz.q2.a2": "10 000 \u2013 20 000 MAD",
+        "quiz.q2.a3": "5 000 \u2013 10 000 MAD",
+        "quiz.q2.a4": "Moins de 5 000 MAD",
+
+        // Q3 branch\u00e9e \u2014 Salari\u00e9
+        "quiz.q3_emp": "Depuis combien de temps occupez-vous votre poste actuel ?",
+        "quiz.q3_emp.a1": "5+ ans (poste stable)",
+        "quiz.q3_emp.a2": "1\u20135 ans",
+        "quiz.q3_emp.a3": "Moins d'un an",
+
+        // Q3 branch\u00e9e \u2014 Ind\u00e9pendant
+        "quiz.q3_self": "Depuis combien de temps votre entreprise existe-t-elle ?",
+        "quiz.q3_self.a1": "3+ ans, enregistr\u00e9e et rentable",
+        "quiz.q3_self.a2": "1\u20133 ans, enregistr\u00e9e",
+        "quiz.q3_self.a3": "Moins d'un an / informelle",
+
+        // Q3 branch\u00e9e \u2014 \u00c9tudiant
+        "quiz.q3_stu": "Quel est votre statut d'inscription actuel ?",
+        "quiz.q3_stu.a1": "Inscrit(e) avec dipl\u00f4me pr\u00e9vu",
+        "quiz.q3_stu.a2": "Actuellement inscrit(e)",
+        "quiz.q3_stu.a3": "R\u00e9cemment dipl\u00f4m\u00e9(e) / ann\u00e9e sabbatique",
+
+        // Q3 branch\u00e9e \u2014 Retrait\u00e9
+        "quiz.q3_ret": "Quelle est votre situation financi\u00e8re \u00e0 la retraite ?",
+        "quiz.q3_ret.a1": "Pension r\u00e9guli\u00e8re + biens immobiliers",
+        "quiz.q3_ret.a2": "Pension r\u00e9guli\u00e8re",
+        "quiz.q3_ret.a3": "\u00c9pargne uniquement",
+
+        // Q3 branch\u00e9e \u2014 Sans emploi
+        "quiz.q3_unemp": "Quel est votre historique professionnel r\u00e9cent ?",
+        "quiz.q3_unemp.a1": "R\u00e9cemment employ\u00e9(e), \u00e9pargne solide",
+        "quiz.q3_unemp.a2": "Exp\u00e9rience professionnelle pass\u00e9e",
+        "quiz.q3_unemp.a3": "Aucun emploi r\u00e9cent",
+
+        // Q4: Logement (partag\u00e9)
+        "quiz.q4": "Quelle est votre situation de logement au Maroc ?",
+        "quiz.q4.a1": "Je suis propri\u00e9taire",
+        "quiz.q4.a2": "Je suis locataire",
+        "quiz.q4.a3": "Je vis chez ma famille",
+
+        // Q5: Famille (partag\u00e9)
+        "quiz.q5": "Quelle est votre situation familiale ?",
+        "quiz.q5.a1": "Mari\u00e9(e) avec enfants",
+        "quiz.q5.a2": "Mari\u00e9(e)",
+        "quiz.q5.a3": "C\u00e9libataire avec attaches familiales",
+        "quiz.q5.a4": "C\u00e9libataire, sans personnes \u00e0 charge",
+
+        // Q6: Voyages (partag\u00e9)
+        "quiz.q6": "Avez-vous d\u00e9j\u00e0 voyag\u00e9 \u00e0 l'international ?",
+        "quiz.q6.a1": "Oui, Schengen/USA/UK/Canada",
+        "quiz.q6.a2": "Oui, d'autres pays",
+        "quiz.q6.a3": "Non, premi\u00e8re fois",
+
+        // Q7: But du voyage (partag\u00e9)
+        "quiz.q7": "Quel est le but de votre voyage ?",
+        "quiz.q7.a1": "Tourisme / Vacances",
+        "quiz.q7.a2": "Affaires / Conf\u00e9rence",
+        "quiz.q7.a3": "Visite familiale",
+        "quiz.q7.a4": "Traitement m\u00e9dical",
+
+        "quiz.result.high": "Profil solide",
+        "quiz.result.high.desc": "Votre profil montre des attaches solides et de bonnes qualifications. Vous avez de bonnes chances d'approbation. Nous vous recommandons de r\u00e9server une consultation pour finaliser votre pr\u00e9paration.",
+        "quiz.result.mid": "Profil mod\u00e9r\u00e9",
+        "quiz.result.mid.desc": "Votre profil a du potentiel mais certains points pourraient \u00eatre renforc\u00e9s. Une consultation professionnelle peut aider \u00e0 maximiser vos chances.",
+        "quiz.result.low": "Pr\u00e9paration n\u00e9cessaire",
+        "quiz.result.low.desc": "Votre profil n\u00e9cessite une pr\u00e9paration suppl\u00e9mentaire avant de postuler. Nous recommandons fortement une consultation pour discuter des strat\u00e9gies de renforcement.",
+        "quiz.result.cta": "R\u00e9server une consultation",
+        "quiz.result.retry": "Refaire le test",
+        "quiz.step": "Question"
     }
 };
