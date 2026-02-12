@@ -950,12 +950,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 start: "center center"
             });
 
+            // Store each card's ScrollTrigger so we can read pin positions
+            const cardSTs = [];
             cards.forEach((card, index) => {
                 card.style.zIndex = index + 1;
                 const scale = index === lastCardIndex ? 1 : 0.9;
                 const scaleDown = gsap.to(card, { scale: scale });
 
-                ScrollTrigger.create({
+                cardSTs.push(ScrollTrigger.create({
                     trigger: card,
                     start: "top top",
                     end: () => lastCardST.start,
@@ -965,53 +967,62 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: "none",
                     animation: scaleDown,
                     toggleActions: "restart none none reverse"
+                }));
+            });
+
+            // Sidebar: sync circles to cards using actual card pin positions
+            const processSteps = document.querySelectorAll('.process-step');
+            if (processSteps.length > 0) {
+                const stepsEl = document.querySelector('.process-steps');
+
+                const circleOffsets = [];
+                processSteps.forEach((step) => {
+                    const circle = step.querySelector('.step-circle');
+                    circleOffsets.push(step.offsetTop + circle.offsetHeight / 2);
                 });
-            });
-        }
 
-        // Highlight process steps and align circles with their cards
-        const processSteps = document.querySelectorAll('.process-step');
-        if (cards.length > 0 && processSteps.length > 0) {
-            const stepsEl = document.querySelector('.process-steps');
+                processSteps[0].classList.add('active');
+                const halfH = stepsEl.offsetHeight / 2;
+                gsap.set(stepsEl, { y: halfH - circleOffsets[0] });
 
-            // Pre-compute each circle's center Y relative to .process-steps
-            const circleOffsets = [];
-            processSteps.forEach((step) => {
-                const circle = step.querySelector('.step-circle');
-                circleOffsets.push(step.offsetTop + circle.offsetHeight / 2);
-            });
+                // Use card pin start positions for exact circle-card mapping
+                ScrollTrigger.create({
+                    trigger: '.steps-cards',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    onUpdate: function(self) {
+                        var scrollPos = self.scroll();
+                        var n = processSteps.length;
+                        var activeIdx = 0;
 
-            processSteps[0].classList.add('active');
+                        // Which card is currently pinned (on top)?
+                        for (var i = 0; i < n && i < cardSTs.length; i++) {
+                            if (scrollPos >= cardSTs[i].start) {
+                                activeIdx = i;
+                            }
+                        }
 
-            // Build a scrubbed timeline so sidebar moves continuously with cards
-            const halfH = stepsEl.offsetHeight / 2;
-            gsap.set(stepsEl, { y: halfH - circleOffsets[0] });
+                        // Smooth interpolation to next circle
+                        var nextIdx = Math.min(activeIdx + 1, n - 1);
+                        var frac = 0;
+                        if (activeIdx < n - 1 && activeIdx < cardSTs.length - 1) {
+                            var rangeStart = cardSTs[activeIdx].start;
+                            var rangeEnd = cardSTs[activeIdx + 1].start;
+                            if (rangeEnd > rangeStart) {
+                                frac = (scrollPos - rangeStart) / (rangeEnd - rangeStart);
+                                frac = Math.max(0, Math.min(1, frac));
+                            }
+                        }
 
-            const tl = gsap.timeline();
-            for (var i = 1; i < circleOffsets.length; i++) {
-                tl.to(stepsEl, { y: halfH - circleOffsets[i], ease: 'none' });
+                        var targetY = halfH - (circleOffsets[activeIdx] + (circleOffsets[nextIdx] - circleOffsets[activeIdx]) * frac);
+                        gsap.set(stepsEl, { y: targetY });
+
+                        processSteps.forEach(function(s, i) {
+                            s.classList.toggle('active', i === activeIdx);
+                        });
+                    }
+                });
             }
-
-            // Sidebar stays fixed via CSS sticky; animate circles in sync with cards
-            // end: 'top top' on last card = animation spans exactly from card0 pin to card3 pin
-            // This gives 3 equal scroll segments matching the 3 timeline tweens
-            ScrollTrigger.create({
-                trigger: cards[0],
-                start: 'top top',
-                endTrigger: cards[cards.length - 1],
-                end: 'top top',
-                scrub: true,
-                animation: tl,
-                onUpdate: function(self) {
-                    var idx = Math.min(
-                        Math.round(self.progress * (processSteps.length - 1)),
-                        processSteps.length - 1
-                    );
-                    processSteps.forEach(function(s, i) {
-                        s.classList.toggle('active', i === idx);
-                    });
-                }
-            });
         }
     }
 });
