@@ -953,14 +953,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Sidebar circles
             const processSteps = document.querySelectorAll('.process-step');
 
-            // Card pinning + circle sync via first card's progress
-            var numCards = cards.length;
+            // Card pinning
+            var cardSTs = [];
             cards.forEach((card, index) => {
                 card.style.zIndex = index + 1;
                 const scale = index === lastCardIndex ? 1 : 0.9;
                 const scaleDown = gsap.to(card, { scale: scale });
 
-                var config = {
+                var st = ScrollTrigger.create({
                     trigger: card,
                     start: "top top",
                     end: () => lastCardST.start,
@@ -970,28 +970,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: "none",
                     animation: scaleDown,
                     toggleActions: "restart none none reverse"
-                };
-
-                if (index === 0 && processSteps.length > 0) {
-                    config.onEnter = function() {
-                        processSteps[0].classList.add('active');
-                    };
-                    config.onLeaveBack = function() {
-                        processSteps.forEach(function(s) { s.classList.remove('active'); });
-                    };
-                    config.onUpdate = function(self) {
-                        var idx = Math.min(
-                            Math.floor(self.progress * numCards),
-                            numCards - 1
-                        );
-                        processSteps.forEach(function(s, j) {
-                            s.classList.toggle('active', j === idx);
-                        });
-                    };
-                }
-
-                ScrollTrigger.create(config);
+                });
+                cardSTs.push(st);
             });
+
+            // Circle sync — check each card's ST progress on every scroll
+            if (processSteps.length > 0) {
+                window.addEventListener('scroll', function() {
+                    var idx = -1;
+                    for (var i = 0; i < cardSTs.length; i++) {
+                        if (cardSTs[i].progress > 0) {
+                            idx = i;
+                        }
+                    }
+                    processSteps.forEach(function(s, j) {
+                        s.classList.toggle('active', j === idx);
+                    });
+                });
+            }
         }
     }
 });
