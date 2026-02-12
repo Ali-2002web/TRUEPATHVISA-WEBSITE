@@ -13,18 +13,17 @@
     --text-gray: #6b7280;
 }
 
-html {
+html, body {
     scroll-behavior: smooth;
-    overflow-x: clip;
+    overflow-x: hidden;
     max-width: 100%;
+    width: 100%;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--dark-blue);
-    overflow-x: clip;
-    max-width: 100%;
     background: #ffffff;
 }
 
@@ -765,15 +764,6 @@ img {
 /* Requirements Page */
 .req-page {
     background: #ffffff;
-    overflow-x: clip;
-    width: 100%;
-}
-
-.req-page .req-hero,
-.req-page .req-section,
-.req-page .footer {
-    max-width: 100vw;
-    overflow-x: hidden;
 }
 
 .header-solid {
@@ -833,21 +823,31 @@ img {
     background: var(--white);
     border-radius: 16px;
     padding: 30px;
-    box-shadow: 0 4px 30px rgba(26, 143, 227, 0.25), 0 0 60px rgba(26, 143, 227, 0.1);
+    box-shadow: 0 4px 20px rgba(26, 143, 227, 0.15);
     max-width: 500px;
     transition: box-shadow 0.3s ease;
 }
 
 .req-card:hover {
-    box-shadow: 0 4px 40px rgba(26, 143, 227, 0.4), 0 0 80px rgba(26, 143, 227, 0.2);
+    box-shadow: 0 4px 30px rgba(26, 143, 227, 0.3);
 }
 
-.req-card-left {
-    align-self: flex-start;
+@media (min-width: 993px) {
+    .req-card-left {
+        align-self: flex-start;
+    }
+
+    .req-card-right {
+        align-self: flex-end;
+    }
 }
 
-.req-card-right {
-    align-self: flex-end;
+@media (max-width: 992px) {
+    .req-card {
+        max-width: none;
+        padding: 16px;
+        border-radius: 12px;
+    }
 }
 
 .req-card-icon {
@@ -2096,8 +2096,7 @@ img {
 
     /* Requirements Page */
     .req-section {
-        padding: 40px 20px;
-        overflow: hidden;
+        padding: 30px 16px;
     }
 
     .req-container {
@@ -2105,33 +2104,20 @@ img {
     }
 
     .req-cards {
-        align-items: stretch;
-    }
-
-    .req-card {
-        max-width: none;
-        width: 100%;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 2px 15px rgba(26, 143, 227, 0.15);
-    }
-
-    .req-card-left,
-    .req-card-right {
-        align-self: stretch;
+        gap: 16px;
     }
 
     .req-card-title {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .req-card-desc {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .req-card-icon {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
     }
 }
 
@@ -2266,17 +2252,24 @@ img {
 
     /* Requirements Page */
     .req-hero {
-        padding: 120px 20px 40px;
-        max-width: 100%;
-        word-wrap: break-word;
+        padding: 120px 16px 30px;
     }
 
     .req-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+    }
+
+    .req-subtitle {
+        font-size: 0.85rem;
+        padding: 0 10px;
     }
 
     .req-section {
-        padding: 40px 20px;
+        padding: 30px 16px;
+    }
+
+    .req-section-title {
+        font-size: 1.1rem;
     }
 
 
