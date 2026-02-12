@@ -2083,12 +2083,26 @@ img {
         margin-top: -30px;
     }
 
-    /* Requirements Page Cards */
+    /* Requirements Page */
+    .req-section {
+        padding: 40px 20px;
+        overflow: hidden;
+    }
+
+    .req-container {
+        max-width: 100%;
+    }
+
+    .req-cards {
+        align-items: stretch;
+    }
+
     .req-card {
         max-width: none;
         width: 100%;
         padding: 20px;
         border-radius: 12px;
+        box-shadow: 0 2px 15px rgba(26, 143, 227, 0.15);
     }
 
     .req-card-left,
