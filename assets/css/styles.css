@@ -15,7 +15,7 @@
 
 html, body {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
     width: 100%;
 }
@@ -535,6 +535,8 @@ img {
 }
 
 .process-sidebar {
+    position: sticky;
+    top: 0;
     height: 100vh;
     display: flex;
     align-items: center;
