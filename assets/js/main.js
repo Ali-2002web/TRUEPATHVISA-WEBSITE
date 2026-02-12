@@ -993,16 +993,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Sidebar stays fixed via CSS sticky; animate circles in sync with cards
+            // end: 'top top' on last card = animation spans exactly from card0 pin to card3 pin
+            // This gives 3 equal scroll segments matching the 3 timeline tweens
             ScrollTrigger.create({
                 trigger: cards[0],
                 start: 'top top',
                 endTrigger: cards[cards.length - 1],
-                end: 'center center',
-                scrub: 0.5,
+                end: 'top top',
+                scrub: true,
                 animation: tl,
                 onUpdate: function(self) {
                     var idx = Math.min(
-                        Math.floor(self.progress * processSteps.length),
+                        Math.round(self.progress * (processSteps.length - 1)),
                         processSteps.length - 1
                     );
                     processSteps.forEach(function(s, i) {
