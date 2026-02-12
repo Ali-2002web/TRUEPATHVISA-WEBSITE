@@ -956,14 +956,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 processSteps[0].classList.add('active');
             }
 
-            // Card pinning animation
-            var cardSTs = [];
+            // Card pinning + circle sync via first card's progress
+            var numCards = cards.length;
             cards.forEach((card, index) => {
                 card.style.zIndex = index + 1;
                 const scale = index === lastCardIndex ? 1 : 0.9;
                 const scaleDown = gsap.to(card, { scale: scale });
 
-                var st = ScrollTrigger.create({
+                var config = {
                     trigger: card,
                     start: "top top",
                     end: () => lastCardST.start,
@@ -973,30 +973,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: "none",
                     animation: scaleDown,
                     toggleActions: "restart none none reverse"
-                });
-                cardSTs.push(st);
-            });
+                };
 
-            // Sync circles to cards using each card's pin start scroll position
-            if (processSteps.length > 0) {
-                ScrollTrigger.create({
-                    trigger: '.steps-cards',
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    onUpdate: function() {
-                        var scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-                        var activeIdx = 0;
-                        for (var i = 0; i < cardSTs.length; i++) {
-                            if (scrollPos >= cardSTs[i].start) {
-                                activeIdx = i;
-                            }
-                        }
+                if (index === 0 && processSteps.length > 0) {
+                    config.onUpdate = function(self) {
+                        var idx = Math.min(
+                            Math.floor(self.progress * numCards),
+                            numCards - 1
+                        );
                         processSteps.forEach(function(s, j) {
-                            s.classList.toggle('active', j === activeIdx);
+                            s.classList.toggle('active', j === idx);
                         });
-                    }
-                });
-            }
+                    };
+                }
+
+                ScrollTrigger.create(config);
+            });
         }
     }
 });
