@@ -952,9 +952,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Sidebar circles
             const processSteps = document.querySelectorAll('.process-step');
-            if (processSteps.length > 0) {
-                processSteps[0].classList.add('active');
-            }
 
             // Card pinning + circle sync via first card's progress
             var numCards = cards.length;
@@ -976,6 +973,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 if (index === 0 && processSteps.length > 0) {
+                    config.onEnter = function() {
+                        processSteps[0].classList.add('active');
+                    };
+                    config.onLeaveBack = function() {
+                        processSteps.forEach(function(s) { s.classList.remove('active'); });
+                    };
                     config.onUpdate = function(self) {
                         var idx = Math.min(
                             Math.floor(self.progress * numCards),
