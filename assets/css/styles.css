@@ -15,14 +15,16 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--dark-blue);
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
     background: #ffffff;
 }
 
@@ -763,6 +765,14 @@ img {
 /* Requirements Page */
 .req-page {
     background: #ffffff;
+    overflow-x: clip;
+    width: 100%;
+}
+
+.req-page .req-hero,
+.req-page .req-section,
+.req-page .footer {
+    max-width: 100vw;
     overflow-x: hidden;
 }
 
@@ -1858,7 +1868,8 @@ img {
 
 @media (max-width: 992px) {
     .header {
-        padding: 15px 30px;
+        padding: 15px 20px;
+        max-width: 100%;
     }
 
     .logo-img {
