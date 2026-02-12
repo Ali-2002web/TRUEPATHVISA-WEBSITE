@@ -956,7 +956,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 processSteps[0].classList.add('active');
             }
 
-            // Card pinning animation
+            // Card pinning animation with circle sync
             cards.forEach((card, index) => {
                 card.style.zIndex = index + 1;
                 const scale = index === lastCardIndex ? 1 : 0.9;
@@ -971,27 +971,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     scrub: 0.5,
                     ease: "none",
                     animation: scaleDown,
-                    toggleActions: "restart none none reverse"
+                    toggleActions: "restart none none reverse",
+                    onEnter: function() {
+                        processSteps.forEach(function(s, i) {
+                            s.classList.toggle('active', i === index);
+                        });
+                    },
+                    onLeaveBack: function() {
+                        var prev = Math.max(0, index - 1);
+                        processSteps.forEach(function(s, i) {
+                            s.classList.toggle('active', i === prev);
+                        });
+                    }
                 });
-
-                // Separate trigger for circle activation — fires earlier than pin
-                if (processSteps[index]) {
-                    ScrollTrigger.create({
-                        trigger: card,
-                        start: 'top 60%',
-                        end: 'bottom 40%',
-                        onEnter: function() {
-                            processSteps.forEach(function(s, i) {
-                                s.classList.toggle('active', i === index);
-                            });
-                        },
-                        onEnterBack: function() {
-                            processSteps.forEach(function(s, i) {
-                                s.classList.toggle('active', i === index);
-                            });
-                        }
-                    });
-                }
             });
         }
     }
