@@ -2230,6 +2230,21 @@ img {
 
     .req-card {
         max-width: 100%;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .req-card-title {
+        font-size: 1rem;
+    }
+
+    .req-card-desc {
+        font-size: 0.85rem;
+    }
+
+    .req-card-icon {
+        width: 32px;
+        height: 32px;
     }
 
     .req-card-left,
