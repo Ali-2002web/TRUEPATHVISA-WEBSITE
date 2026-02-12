@@ -971,7 +971,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Highlight process steps and align circles with their cards
         const processSteps = document.querySelectorAll('.process-step');
-        if (cards.length > 0 && processSteps.length > 0) {
+        const sidebarEl = document.querySelector('.process-sidebar');
+        if (cards.length > 0 && processSteps.length > 0 && sidebarEl) {
             const stepsEl = document.querySelector('.process-steps');
 
             // Pre-compute each circle's center Y relative to .process-steps
@@ -992,6 +993,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 tl.to(stepsEl, { y: halfH - circleOffsets[i], ease: 'none' });
             }
 
+            // Pin the sidebar during the card scroll range (same as cards)
+            ScrollTrigger.create({
+                trigger: sidebarEl,
+                start: 'top top',
+                endTrigger: cards[cards.length - 1],
+                end: 'center center',
+                pin: true,
+                pinSpacing: false
+            });
+
+            // Animate sidebar circles in sync with card scroll progress
             ScrollTrigger.create({
                 trigger: cards[0],
                 start: 'top top',
