@@ -956,13 +956,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 processSteps[0].classList.add('active');
             }
 
-            // Card pinning animation with circle sync
+            // Card pinning animation
+            var cardSTs = [];
             cards.forEach((card, index) => {
                 card.style.zIndex = index + 1;
                 const scale = index === lastCardIndex ? 1 : 0.9;
                 const scaleDown = gsap.to(card, { scale: scale });
 
-                ScrollTrigger.create({
+                var st = ScrollTrigger.create({
                     trigger: card,
                     start: "top top",
                     end: () => lastCardST.start,
@@ -971,20 +972,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     scrub: 0.5,
                     ease: "none",
                     animation: scaleDown,
-                    toggleActions: "restart none none reverse",
-                    onEnter: function() {
-                        processSteps.forEach(function(s, i) {
-                            s.classList.toggle('active', i === index);
-                        });
-                    },
-                    onLeaveBack: function() {
-                        var prev = Math.max(0, index - 1);
-                        processSteps.forEach(function(s, i) {
-                            s.classList.toggle('active', i === prev);
+                    toggleActions: "restart none none reverse"
+                });
+                cardSTs.push(st);
+            });
+
+            // Single scroll listener syncs circles using pin start positions
+            if (processSteps.length > 0) {
+                var earlyOffset = window.innerHeight * 0.4;
+                ScrollTrigger.create({
+                    trigger: '.steps-cards',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    onUpdate: function() {
+                        var scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+                        var activeIdx = 0;
+                        for (var i = 0; i < cardSTs.length; i++) {
+                            if (scrollPos >= cardSTs[i].start - earlyOffset) {
+                                activeIdx = i;
+                            }
+                        }
+                        processSteps.forEach(function(s, j) {
+                            s.classList.toggle('active', j === activeIdx);
                         });
                     }
                 });
-            });
+            }
         }
     }
 });
