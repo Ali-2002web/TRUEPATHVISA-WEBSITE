@@ -950,14 +950,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 start: "center center"
             });
 
-            // Store each card's ScrollTrigger so we can read pin positions
-            const cardSTs = [];
+            // Sidebar circles
+            const processSteps = document.querySelectorAll('.process-step');
+            if (processSteps.length > 0) {
+                processSteps[0].classList.add('active');
+            }
+
+            // Card pinning animation
             cards.forEach((card, index) => {
                 card.style.zIndex = index + 1;
                 const scale = index === lastCardIndex ? 1 : 0.9;
                 const scaleDown = gsap.to(card, { scale: scale });
 
-                cardSTs.push(ScrollTrigger.create({
+                ScrollTrigger.create({
                     trigger: card,
                     start: "top top",
                     end: () => lastCardST.start,
@@ -967,60 +972,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     ease: "none",
                     animation: scaleDown,
                     toggleActions: "restart none none reverse"
-                }));
+                });
+
+                // Separate trigger for circle activation — fires earlier than pin
+                if (processSteps[index]) {
+                    ScrollTrigger.create({
+                        trigger: card,
+                        start: 'top 60%',
+                        end: 'bottom 40%',
+                        onEnter: function() {
+                            processSteps.forEach(function(s, i) {
+                                s.classList.toggle('active', i === index);
+                            });
+                        },
+                        onEnterBack: function() {
+                            processSteps.forEach(function(s, i) {
+                                s.classList.toggle('active', i === index);
+                            });
+                        }
+                    });
+                }
             });
-
-            // Sidebar: sync circles to cards using visual card positions
-            const processSteps = document.querySelectorAll('.process-step');
-            if (processSteps.length > 0) {
-                const stepsEl = document.querySelector('.process-steps');
-
-                const circleOffsets = [];
-                processSteps.forEach((step) => {
-                    const circle = step.querySelector('.step-circle');
-                    circleOffsets.push(step.offsetTop + circle.offsetHeight / 2);
-                });
-
-                processSteps[0].classList.add('active');
-                const halfH = stepsEl.offsetHeight / 2;
-                gsap.set(stepsEl, { y: halfH - circleOffsets[0] });
-
-                // Read actual card positions on screen (not GSAP internal values)
-                ScrollTrigger.create({
-                    trigger: '.steps-cards',
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    onUpdate: function() {
-                        var n = Math.min(processSteps.length, cards.length);
-                        var activeIdx = 0;
-
-                        // A pinned card has rect.top near 0; scaled-down cards ≈ 30px
-                        for (var i = 0; i < n; i++) {
-                            if (cards[i].getBoundingClientRect().top <= 50) {
-                                activeIdx = i;
-                            }
-                        }
-
-                        // Smooth interpolation: how close is the next card to pinning?
-                        var nextIdx = Math.min(activeIdx + 1, n - 1);
-                        var frac = 0;
-                        if (activeIdx < n - 1) {
-                            var nextTop = cards[activeIdx + 1].getBoundingClientRect().top;
-                            var cardH = cards[0].offsetHeight;
-                            if (cardH > 0) {
-                                frac = 1 - Math.max(0, Math.min(1, nextTop / cardH));
-                            }
-                        }
-
-                        var targetY = halfH - (circleOffsets[activeIdx] + (circleOffsets[nextIdx] - circleOffsets[activeIdx]) * frac);
-                        gsap.set(stepsEl, { y: targetY });
-
-                        processSteps.forEach(function(s, i) {
-                            s.classList.toggle('active', i === activeIdx);
-                        });
-                    }
-                });
-            }
         }
     }
 });

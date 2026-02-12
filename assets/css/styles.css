@@ -537,9 +537,7 @@ img {
 .process-sidebar {
     position: sticky;
     top: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+    padding-top: 100px;
     align-self: flex-start;
     flex-shrink: 0;
     width: 180px;
@@ -550,7 +548,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 40px;
+    gap: 100px;
     position: relative;
     padding-left: 0;
 }
