@@ -953,14 +953,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Sidebar circles
             const processSteps = document.querySelectorAll('.process-step');
 
-            // Card pinning
-            var cardSTs = [];
+            // Pass 1: Create ALL pin triggers first
             cards.forEach((card, index) => {
                 card.style.zIndex = index + 1;
                 const scale = index === lastCardIndex ? 1 : 0.9;
                 const scaleDown = gsap.to(card, { scale: scale });
 
-                var st = ScrollTrigger.create({
+                ScrollTrigger.create({
                     trigger: card,
                     start: "top top",
                     end: () => lastCardST.start,
@@ -971,20 +970,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     animation: scaleDown,
                     toggleActions: "restart none none reverse"
                 });
-                cardSTs.push(st);
             });
 
-            // Circle sync — check each card's ST progress on every scroll
+            // Refresh so GSAP recalculates all positions with pin offsets
+            ScrollTrigger.refresh();
+
+            // Pass 2: Create circle triggers AFTER refresh
             if (processSteps.length > 0) {
-                window.addEventListener('scroll', function() {
-                    var idx = -1;
-                    for (var i = 0; i < cardSTs.length; i++) {
-                        if (cardSTs[i].progress > 0) {
-                            idx = i;
+                cards.forEach(function(card, index) {
+                    ScrollTrigger.create({
+                        trigger: card,
+                        start: 'top center',
+                        onEnter: function() {
+                            processSteps.forEach(function(s, j) {
+                                s.classList.toggle('active', j === index);
+                            });
+                        },
+                        onLeaveBack: function() {
+                            if (index === 0) {
+                                processSteps.forEach(function(s) { s.classList.remove('active'); });
+                            } else {
+                                processSteps.forEach(function(s, j) {
+                                    s.classList.toggle('active', j === index - 1);
+                                });
+                            }
                         }
-                    }
-                    processSteps.forEach(function(s, j) {
-                        s.classList.toggle('active', j === idx);
                     });
                 });
             }
