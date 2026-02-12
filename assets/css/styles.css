@@ -762,6 +762,7 @@ img {
 /* Requirements Page */
 .req-page {
     background: #ffffff;
+    overflow-x: hidden;
 }
 
 .header-solid {
@@ -2232,6 +2233,8 @@ img {
     .req-card-right {
         margin-left: 0;
         margin-right: 0;
+        align-self: stretch;
+        max-width: 100%;
     }
 
     .photo-guide-card {
