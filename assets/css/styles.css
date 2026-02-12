@@ -15,6 +15,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -2215,6 +2216,8 @@ img {
     /* Requirements Page */
     .req-hero {
         padding: 120px 20px 40px;
+        max-width: 100%;
+        word-wrap: break-word;
     }
 
     .req-title {
